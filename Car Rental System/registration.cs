@@ -32,7 +32,6 @@ namespace Car_Rental_System
             string address = textBox4.Text;
             string password = textBox5.Text;
 
-            // Validate fields
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) ||
                 string.IsNullOrWhiteSpace(password))
@@ -41,13 +40,10 @@ namespace Car_Rental_System
                 return;
             }
 
-            // Hash the password
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-            // Insert query
             string query = "INSERT INTO users (name, email, phone, address, password) VALUES (@name, @email, @phone, @address, @password)";
 
-            // SQL Parameters
             MySqlParameter[] parameters =
             {
         new MySqlParameter("@name", name),
@@ -57,7 +53,6 @@ namespace Car_Rental_System
         new MySqlParameter("@password", hashedPassword)
     };
 
-            // Database Execution
             DatabaseHelper db = new DatabaseHelper();
             bool success = db.ExecuteQuery(query, parameters);
 
@@ -69,6 +64,11 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Error during registration. Please check your database connection.");
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

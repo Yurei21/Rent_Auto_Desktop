@@ -54,7 +54,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-
             // 
             // textBox1
             // 
@@ -62,7 +61,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(378, 23);
             textBox1.TabIndex = 1;
-
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -74,7 +73,6 @@
             label1.Size = new Size(45, 16);
             label1.TabIndex = 2;
             label1.Text = "Name";
-
             // 
             // textBox2
             // 
@@ -82,7 +80,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(378, 23);
             textBox2.TabIndex = 1;
-
             // 
             // label2
             // 
@@ -94,7 +91,6 @@
             label2.Size = new Size(46, 16);
             label2.TabIndex = 2;
             label2.Text = "Email";
-
             // 
             // textBox3
             // 
@@ -102,7 +98,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(378, 23);
             textBox3.TabIndex = 1;
-
             // 
             // label3
             // 
@@ -114,7 +109,6 @@
             label3.Size = new Size(52, 16);
             label3.TabIndex = 2;
             label3.Text = "Phone";
-
             // 
             // textBox4
             // 
@@ -122,7 +116,6 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(378, 23);
             textBox4.TabIndex = 1;
-
             // 
             // label4
             // 
@@ -134,7 +127,6 @@
             label4.Size = new Size(66, 16);
             label4.TabIndex = 2;
             label4.Text = "Address";
-
             // 
             // label5
             // 
@@ -146,7 +138,6 @@
             label5.Size = new Size(81, 16);
             label5.TabIndex = 4;
             label5.Text = "Password";
-
             // 
             // textBox5
             // 
@@ -154,7 +145,6 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(378, 23);
             textBox5.TabIndex = 3;
-
             // 
             // label6
             // 
@@ -166,7 +156,6 @@
             label6.Size = new Size(515, 77);
             label6.TabIndex = 2;
             label6.Text = "REGISTRATION";
-
             // 
             // closeButton
             // 
@@ -199,7 +188,7 @@
             Register.UseVisualStyleBackColor = false;
             Register.Click += Register_Click;
             // 
-            // registration
+            // Registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -220,7 +209,7 @@
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "registration";
+            Name = "Registration";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "registration";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

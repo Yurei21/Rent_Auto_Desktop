@@ -9,7 +9,9 @@ namespace Car_Rental_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            SignIn signForms = new SignIn();
+            signForms.Show();
+            this.Hide();
         }
 
         private void Register_Click(object sender, EventArgs e)
