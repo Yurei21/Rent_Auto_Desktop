@@ -11,5 +11,10 @@ namespace Car_Rental_System
         {
 
         }
+
+        private void Landing_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
