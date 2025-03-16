@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System
 {
-    partial class registration
+    partial class Registration
     {
         /// <summary>
         /// Required designer variable.
@@ -40,19 +40,21 @@
             label5 = new Label();
             textBox5 = new TextBox();
             label6 = new Label();
+            closeButton = new Button();
+            Register = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.r__1_;
-            pictureBox1.Location = new Point(550, -19);
+            pictureBox1.Location = new Point(543, -8);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(357, 153);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+
             // 
             // textBox1
             // 
@@ -60,7 +62,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(378, 23);
             textBox1.TabIndex = 1;
-            textBox1.TextChanged += this.textBox1_TextChanged;
+
             // 
             // label1
             // 
@@ -72,7 +74,7 @@
             label1.Size = new Size(45, 16);
             label1.TabIndex = 2;
             label1.Text = "Name";
-            label1.Click += label1_Click;
+
             // 
             // textBox2
             // 
@@ -80,7 +82,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(378, 23);
             textBox2.TabIndex = 1;
-            textBox2.TextChanged += textBox2_TextChanged;
+
             // 
             // label2
             // 
@@ -92,7 +94,7 @@
             label2.Size = new Size(46, 16);
             label2.TabIndex = 2;
             label2.Text = "Email";
-            label2.Click += label1_Click;
+
             // 
             // textBox3
             // 
@@ -100,7 +102,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(378, 23);
             textBox3.TabIndex = 1;
-            textBox3.TextChanged += textBox2_TextChanged;
+
             // 
             // label3
             // 
@@ -112,7 +114,7 @@
             label3.Size = new Size(52, 16);
             label3.TabIndex = 2;
             label3.Text = "Phone";
-            label3.Click += label1_Click;
+
             // 
             // textBox4
             // 
@@ -120,7 +122,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(378, 23);
             textBox4.TabIndex = 1;
-            textBox4.TextChanged += textBox2_TextChanged;
+
             // 
             // label4
             // 
@@ -129,10 +131,10 @@
             label4.ForeColor = Color.White;
             label4.Location = new Point(67, 278);
             label4.Name = "label4";
-            label4.Size = new Size(52, 16);
+            label4.Size = new Size(66, 16);
             label4.TabIndex = 2;
-            label4.Text = "Phone";
-            label4.Click += label1_Click;
+            label4.Text = "Address";
+
             // 
             // label5
             // 
@@ -144,7 +146,7 @@
             label5.Size = new Size(81, 16);
             label5.TabIndex = 4;
             label5.Text = "Password";
-            label5.Click += label5_Click;
+
             // 
             // textBox5
             // 
@@ -152,7 +154,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(378, 23);
             textBox5.TabIndex = 3;
-            textBox5.TextChanged += textBox5_TextChanged;
+
             // 
             // label6
             // 
@@ -164,14 +166,47 @@
             label6.Size = new Size(515, 77);
             label6.TabIndex = 2;
             label6.Text = "REGISTRATION";
-            label6.Click += label1_Click;
+
+            // 
+            // closeButton
+            // 
+            closeButton.FlatAppearance.BorderSize = 0;
+            closeButton.FlatStyle = FlatStyle.Flat;
+            closeButton.Font = new Font("Segoe UI", 9F);
+            closeButton.ForeColor = Color.White;
+            closeButton.Location = new Point(906, 12);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(42, 44);
+            closeButton.TabIndex = 5;
+            closeButton.Text = "X";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
+            // 
+            // Register
+            // 
+            Register.BackColor = Color.SlateBlue;
+            Register.Cursor = Cursors.Hand;
+            Register.FlatAppearance.BorderColor = Color.Red;
+            Register.FlatAppearance.BorderSize = 0;
+            Register.FlatStyle = FlatStyle.Flat;
+            Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Register.ForeColor = Color.White;
+            Register.Location = new Point(645, 261);
+            Register.Name = "Register";
+            Register.Size = new Size(177, 46);
+            Register.TabIndex = 6;
+            Register.Text = "Register";
+            Register.UseVisualStyleBackColor = false;
+            Register.Click += Register_Click;
             // 
             // registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
-            ClientSize = new Size(885, 537);
+            ClientSize = new Size(951, 577);
+            Controls.Add(Register);
+            Controls.Add(closeButton);
             Controls.Add(label5);
             Controls.Add(textBox5);
             Controls.Add(label4);
@@ -188,8 +223,6 @@
             Name = "registration";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "registration";
-            WindowState = FormWindowState.Maximized;
-            Load += registration_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -209,5 +242,7 @@
         private Label label5;
         private TextBox textBox5;
         private Label label6;
+        private Button closeButton;
+        private Button Register;
     }
 }

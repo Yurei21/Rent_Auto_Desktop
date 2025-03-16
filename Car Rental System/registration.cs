@@ -7,44 +7,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.Xml.Linq;
+using BCrypt.Net;
 
 namespace Car_Rental_System
 {
-    public partial class registration : Form
+    public partial class Registration : Form
     {
-        public registration()
+        public Registration()
         {
             InitializeComponent();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Register_Click(object sender, EventArgs e)
         {
+            string name = textBox1.Text;
+            string email = textBox2.Text;
+            string phone = textBox3.Text;
+            string address = textBox4.Text;
+            string password = textBox5.Text;
 
-        }
+            // Validate fields
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) ||
+                string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("All fields are required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+            // Hash the password
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-        }
+            // Insert query
+            string query = "INSERT INTO users (name, email, phone, address, password) VALUES (@name, @email, @phone, @address, @password)";
 
-        private void registration_Load(object sender, EventArgs e)
-        {
+            // SQL Parameters
+            MySqlParameter[] parameters =
+            {
+        new MySqlParameter("@name", name),
+        new MySqlParameter("@email", email),
+        new MySqlParameter("@phone", phone),
+        new MySqlParameter("@address", address),
+        new MySqlParameter("@password", hashedPassword)
+    };
 
-        }
+            // Database Execution
+            DatabaseHelper db = new DatabaseHelper();
+            bool success = db.ExecuteQuery(query, parameters);
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
+            if (success)
+            {
+                MessageBox.Show("Registration Successful!");
+            }
+            else
+            {
+                MessageBox.Show("Error during registration. Please check your database connection.");
+            }
         }
     }
 }

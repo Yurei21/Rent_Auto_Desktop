@@ -12,9 +12,16 @@ namespace Car_Rental_System
 
         }
 
-        private void Landing_Load(object sender, EventArgs e)
+        private void Register_Click(object sender, EventArgs e)
         {
+            Registration reg = new Registration();
+            reg.Show();
+            this.Hide();
+        }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
