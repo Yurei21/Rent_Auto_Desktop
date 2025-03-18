@@ -35,5 +35,11 @@ namespace Car_Rental_System
             registrationForm.Show();
             this.Hide();
         }
+
+        private void signinButton_Click(object sender, EventArgs e)
+        {
+            String username = textBox1.Text;
+            String password = textBox2.Text;
+        }
     }
 }

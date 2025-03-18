@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
@@ -34,6 +35,50 @@ namespace Car_Rental_System
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void signinButton_Click(object sender, EventArgs e)
+        {
+            string adminUsername = textBox1.Text;
+            string adminPassword = textBox2.Text;
+
+             if (String.IsNullOrWhiteSpace(adminUsername) || String.IsNullOrWhiteSpace(adminPassword))
+             {
+                 MessageBox.Show("Please Input a username or password.");
+                 return;
+             }
+
+             DatabaseHelper db = new DatabaseHelper();
+             String query = "SELECT password FROM admins WHERE username = @username";
+
+            MySqlParameter[] param = { new MySqlParameter("@username", adminUsername) };
+            object result = db.ExecuteScalar(query, param);
+
+            if (result != null && result is string storedHashedPassword)
+            {
+                if (BCrypt.Net.BCrypt.Verify(adminPassword, storedHashedPassword))
+                {
+                    MessageBox.Show("Logged in Successfully");
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Password");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Username Not Found or Password Retrieval Failed");
+            }
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AdminRegistration registration = new AdminRegistration();  
+            registration.Show();
+            this.Hide();
         }
     }
 }

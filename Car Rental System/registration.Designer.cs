@@ -48,16 +48,16 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.r__1_;
-            pictureBox1.Location = new Point(543, -8);
+            pictureBox1.Location = new Point(-1, -8);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(357, 153);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.Size = new Size(134, 134);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(68, 147);
+            textBox1.Location = new Point(152, 208);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(378, 23);
             textBox1.TabIndex = 1;
@@ -67,7 +67,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(67, 129);
+            label1.Location = new Point(151, 190);
             label1.Name = "label1";
             label1.Size = new Size(45, 16);
             label1.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(67, 198);
+            textBox2.Location = new Point(151, 259);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(378, 23);
             textBox2.TabIndex = 1;
@@ -85,7 +85,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(66, 180);
+            label2.Location = new Point(150, 241);
             label2.Name = "label2";
             label2.Size = new Size(46, 16);
             label2.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(68, 248);
+            textBox3.Location = new Point(152, 309);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(378, 23);
             textBox3.TabIndex = 1;
@@ -103,7 +103,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(67, 230);
+            label3.Location = new Point(151, 291);
             label3.Name = "label3";
             label3.Size = new Size(52, 16);
             label3.TabIndex = 2;
@@ -111,17 +111,17 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(68, 296);
+            textBox4.Location = new Point(152, 357);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(378, 23);
-            textBox4.TabIndex = 1;
+            textBox4.TabIndex = 7;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(67, 278);
+            label4.Location = new Point(151, 339);
             label4.Name = "label4";
             label4.Size = new Size(66, 16);
             label4.TabIndex = 2;
@@ -132,7 +132,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(67, 326);
+            label5.Location = new Point(151, 387);
             label5.Name = "label5";
             label5.Size = new Size(81, 16);
             label5.TabIndex = 4;
@@ -140,7 +140,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(68, 344);
+            textBox5.Location = new Point(152, 405);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(378, 23);
             textBox5.TabIndex = 3;
@@ -150,7 +150,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Heavitas", 45F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(12, 22);
+            label6.Location = new Point(235, 12);
             label6.Name = "label6";
             label6.Size = new Size(515, 77);
             label6.TabIndex = 2;

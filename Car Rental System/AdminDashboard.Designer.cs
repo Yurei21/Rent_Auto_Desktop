@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
-            closeButton = new Button();
             panel1 = new Panel();
             button5 = new Button();
             button4 = new Button();
@@ -39,23 +38,11 @@
             panel2 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            panel3 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // closeButton
-            // 
-            closeButton.FlatAppearance.BorderSize = 0;
-            closeButton.FlatStyle = FlatStyle.Flat;
-            closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(921, 10);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
-            closeButton.TabIndex = 10;
-            closeButton.Text = "X";
-            closeButton.UseVisualStyleBackColor = true;
-            closeButton.Click += closeButton_Click;
             // 
             // panel1
             // 
@@ -191,17 +178,27 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(166, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(791, 577);
+            panel3.TabIndex = 12;
+            panel3.Paint += panel3_Paint;
+            // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(957, 577);
+            Controls.Add(panel3);
             Controls.Add(panel1);
-            Controls.Add(closeButton);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "AdminDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -211,8 +208,6 @@
         }
 
         #endregion
-
-        private Button closeButton;
         private Panel panel1;
         private Panel panel2;
         private Button button1;
@@ -222,5 +217,6 @@
         private Button button4;
         private Label label1;
         private Button button5;
+        private Panel panel3;
     }
 }

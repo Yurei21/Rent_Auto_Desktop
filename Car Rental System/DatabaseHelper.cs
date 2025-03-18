@@ -11,6 +11,53 @@ public class DatabaseHelper
         return new MySqlConnection(connectionString);
     }
 
+    public int ExecuteScalarQuery(string query, MySqlParameter[] parameters)
+    {
+        int result = 0;
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            conn.Open();
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+
+                object scalarResult = cmd.ExecuteScalar();
+                if (scalarResult != null && int.TryParse(scalarResult.ToString(), out int count))
+                {
+                    result = count;
+                }
+            }
+        }
+        return result;
+    }
+
+    public string ExecuteScalar(string query, MySqlParameter[] parameters)
+    {
+        string result = null;
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            conn.Open();
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+
+                object scalarResult = cmd.ExecuteScalar();
+                if (scalarResult != null)
+                {
+                    result = scalarResult.ToString(); 
+                }
+            }
+        }
+        return result;
+    }
+
+
     public bool ExecuteQuery(string query, MySqlParameter[] parameters)
     {
         try

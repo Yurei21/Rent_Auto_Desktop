@@ -15,16 +15,19 @@ namespace Car_Rental_System
         public AdminDashboard()
         {
             InitializeComponent();
-        }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };
+            hForm.FormBorderStyle = FormBorderStyle.None;
+            this.panel3.Controls.Add(hForm);
+            hForm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };
+            hForm.FormBorderStyle = FormBorderStyle.None;
+            this.panel3.Controls.Add(hForm);
+            hForm.Show();   
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -46,6 +49,9 @@ namespace Car_Rental_System
 
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

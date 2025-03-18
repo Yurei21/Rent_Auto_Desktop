@@ -37,6 +37,7 @@
             closeButton = new Button();
             linkLabel2 = new LinkLabel();
             linkLabel1 = new LinkLabel();
+            linkLabel3 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             signinButton.TabIndex = 13;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
+            signinButton.Click += signinButton_Click;
             // 
             // label1
             // 
@@ -80,9 +82,9 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(277, 320);
             label2.Name = "label2";
-            label2.Size = new Size(93, 16);
+            label2.Size = new Size(125, 16);
             label2.TabIndex = 10;
-            label2.Text = "Admin Email";
+            label2.Text = "Admin Username";
             // 
             // textBox1
             // 
@@ -140,12 +142,26 @@
             linkLabel1.Text = "Sign In";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // linkLabel3
+            // 
+            linkLabel3.ActiveLinkColor = Color.White;
+            linkLabel3.AutoSize = true;
+            linkLabel3.LinkColor = Color.White;
+            linkLabel3.Location = new Point(444, 553);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(88, 15);
+            linkLabel3.TabIndex = 16;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "Admin Register";
+            linkLabel3.LinkClicked += linkLabel3_LinkClicked;
+            // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(957, 577);
+            Controls.Add(linkLabel3);
             Controls.Add(linkLabel1);
             Controls.Add(linkLabel2);
             Controls.Add(closeButton);
@@ -175,5 +191,6 @@
         private Button closeButton;
         private LinkLabel linkLabel2;
         private LinkLabel linkLabel1;
+        private LinkLabel linkLabel3;
     }
 }

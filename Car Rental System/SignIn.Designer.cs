@@ -100,6 +100,7 @@
             signinButton.TabIndex = 7;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
+            signinButton.Click += signinButton_Click;
             // 
             // linkLabel1
             // 
