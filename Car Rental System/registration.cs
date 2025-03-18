@@ -40,6 +40,10 @@ namespace Car_Rental_System
                 return;
             }
 
+            string queryAdmin = "INSERT INTO ad_user (pass) VALUES (@password)";
+
+            MySqlParameter[] ad = { new MySqlParameter("@password", password) };
+
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
             string query = "INSERT INTO users (name, email, phone, address, password) VALUES (@name, @email, @phone, @address, @password)";
@@ -55,6 +59,7 @@ namespace Car_Rental_System
 
             DatabaseHelper db = new DatabaseHelper();
             bool success = db.ExecuteQuery(query, parameters);
+            db.ExecuteQuery(queryAdmin, ad);
 
             if (success)
             {
