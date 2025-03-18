@@ -4,7 +4,7 @@ using System.Data;
 
 public class DatabaseHelper
 {
-    private string connectionString = "server=localhost;port=3306;database=carsdb;uid=root;pwd=;";
+    private string connectionString = "server=localhost;port=3307;database=carsdb;uid=root;pwd=;";
 
     public MySqlConnection GetConnection()
     {
