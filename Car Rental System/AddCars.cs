@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
@@ -54,8 +55,8 @@ namespace Car_Rental_System
                 return;
             }
 
-            string status = comboBox1.SelectedItem?.ToString() ?? "Available"; // Default to "Available" if nothing is selected
-            string carUrl = carPath; // Path from file upload
+            string status = comboBox1.SelectedItem?.ToString() ?? "Available"; 
+            string carUrl = carPath; 
 
             string query = "INSERT INTO vehicles (model, car_url, brand, year, rent_price, availability_status) VALUES (@model, @car_url, @brand, @year, @rent_price, @availability_status)";
 
@@ -68,8 +69,37 @@ namespace Car_Rental_System
                 new MySqlParameter("@availability_status", status)
             };
 
-            db.ExecuteQuery(query, parameters);
-            MessageBox.Show("Car successfully added!");
+            int carId;
+
+            using (var conn = db.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddRange(parameters);
+                    cmd.ExecuteNonQuery();
+                    carId = (int)cmd.LastInsertedId;
+                }
+            }
+
+            if (carId > 0)
+            {
+                string queryAdmin = "INSERT INTO maintenance (vehicle_id) VALUES (@vehicle_id)";
+                MySqlParameter[] ad =
+                {
+                    new MySqlParameter("@vehicle_id", carId)
+                };
+                db.ExecuteQuery(queryAdmin, ad);
+
+                MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AddMaintenance addM = new AddMaintenance(carId);
+                addM.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Error during registration. Please check your database connection.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
