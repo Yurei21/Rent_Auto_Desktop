@@ -9,6 +9,7 @@ CREATE TABLE Users (
 
 CREATE TABLE unhashedUsers (
       u_id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT,
       pass VARCHAR(255)
 );
 
@@ -21,6 +22,7 @@ CREATE TABLE Admins (
 
 CREATE TABLE unhashedAdmin (
     a_id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT,
     pass VARCHAR(255)
 );
 

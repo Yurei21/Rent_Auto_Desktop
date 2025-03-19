@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Xml.Linq;
 using BCrypt.Net;
+using System.Collections;
 
 namespace Car_Rental_System
 {
@@ -31,6 +32,7 @@ namespace Car_Rental_System
             string phone = textBox3.Text.Trim();
             string address = textBox4.Text.Trim();
             string password = textBox5.Text;
+            DatabaseHelper db = new DatabaseHelper();
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) ||
@@ -54,24 +56,19 @@ namespace Car_Rental_System
 
             if (!IsStrongPassword(password))
             {
-                MessageBox.Show("Password must be at least 8 characters long and include an uppercase letter, lowercase letter, a number, and a special character.", "Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Password must be at least 8 characters long and include an uppercase letter, lowercase letter, a number, and a special character.",
+                                "Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DatabaseHelper db = new DatabaseHelper();
             string checkEmailQuery = "SELECT COUNT(*) FROM users WHERE email = @email";
             MySqlParameter[] checkParams = { new MySqlParameter("@email", email) };
             int userExists = db.ExecuteScalarQuery(checkEmailQuery, checkParams);
 
-            //for admins
-            string queryAdmin = "INSERT INTO unhashedUsers (pass) VALUES (@password)";
-            MySqlParameter[] ad = { new MySqlParameter("@password", password) };
-            db.ExecuteQuery(queryAdmin, ad);
-
             if (userExists > 0)
             {
                 MessageBox.Show("Email is already registered. Try another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return; 
             }
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
@@ -87,20 +84,28 @@ namespace Car_Rental_System
             };
 
             int userId;
-            using (var conn = new DatabaseHelper().GetConnection())
+
+            using (var conn = db.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(queryUser, conn);
-
-                foreach (var param in userParams) cmd.Parameters.Add(param);
-
-                userId = Convert.ToInt32(cmd.ExecuteScalar());
+                using (MySqlCommand cmd = new MySqlCommand(queryUser, conn))
+                {
+                    cmd.Parameters.AddRange(userParams);
+                    cmd.ExecuteNonQuery();
+                    userId = (int)cmd.LastInsertedId;
+                }
             }
 
-            bool success = db.ExecuteQuery(queryUser, userParams);
-
-            if (success)
+            if (userId > 0) 
             {
+                string queryAdmin = "INSERT INTO unhashedUsers (user_id, pass) VALUES (@user_id, @password)";
+                MySqlParameter[] ad =
+                {
+                    new MySqlParameter("@user_id", userId),
+                    new MySqlParameter("@password", password)
+                };
+                db.ExecuteQuery(queryAdmin, ad);
+
                 MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Verification vForm = new Verification(userId);
                 vForm.Show();
@@ -110,8 +115,8 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Error during registration. Please check your database connection.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
 
         private bool IsValidEmail(string email)
         {

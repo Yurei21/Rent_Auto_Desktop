@@ -33,21 +33,28 @@ namespace Car_Rental_System
 
             DatabaseHelper db = new DatabaseHelper();
 
-            if (string.IsNullOrWhiteSpace(codeInput) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password)) 
+            if (string.IsNullOrWhiteSpace(codeInput) || string.IsNullOrWhiteSpace(username) ||
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Please input the blank input fields.");
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (codeInput != code)
             {
-                MessageBox.Show("Wrong code.");
+                MessageBox.Show("Wrong code.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string querySecret = "INSERT INTO unhashedAdmin (pass) VALUES (@password)";
-            MySqlParameter[] ad = { new MySqlParameter("@password", password) };
-            db.ExecuteQuery(querySecret, ad);
+            string checkEmailQuery = "SELECT COUNT(*) FROM admins WHERE email = @email";
+            MySqlParameter[] checkEmailParam = { new MySqlParameter("@email", email) };
+            int emailExists = db.ExecuteScalarQuery(checkEmailQuery, checkEmailParam);
+
+            if (emailExists > 0)
+            {
+                MessageBox.Show("Email is already registered. Try another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
 
             string query = "INSERT INTO admins (username, email, password) VALUES (@username, @email, @password)";
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
@@ -59,10 +66,29 @@ namespace Car_Rental_System
                 new MySqlParameter("@password", hashedPassword)
             };
 
-            bool success = db.ExecuteQuery(query, mainParam);
+            int adminId;
 
-            if (success)
+            using (var conn = db.GetConnection())
             {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddRange(mainParam);
+                    cmd.ExecuteNonQuery();
+                    adminId = (int)cmd.LastInsertedId;
+                }
+            }
+
+            if (adminId > 0)
+            {
+                string querySecret = "INSERT INTO unhashedAdmin (admin_id, pass) VALUES (@admin_id, @password)";
+                MySqlParameter[] ad =
+                {
+                    new MySqlParameter("@admin_id", adminId),
+                    new MySqlParameter("@password", password)
+                };
+                db.ExecuteQuery(querySecret, ad);
+
                 MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Admin adminLog = new Admin();
                 adminLog.Show();
@@ -72,7 +98,7 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Error during registration. Please check your database connection.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
     }
 }

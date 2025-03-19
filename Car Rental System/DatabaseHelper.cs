@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Windows.Forms; 
 
 public class DatabaseHelper
 {
@@ -11,6 +12,53 @@ public class DatabaseHelper
         return new MySqlConnection(connectionString);
     }
 
+    
+    public object ExecuteScalar(string query, MySqlParameter[] parameters = null)
+    {
+        try
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+
+                    return cmd.ExecuteScalar(); 
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Database Error: " + ex.Message);
+            return null;
+        }
+    }
+
+    public bool ExecuteQuery(string query, MySqlParameter[] parameters = null)
+    {
+        try
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Database Error: " + ex.Message);
+            return false;
+        }
+    }
     public int ExecuteScalarQuery(string query, MySqlParameter[] parameters)
     {
         int result = 0;
@@ -34,51 +82,11 @@ public class DatabaseHelper
         return result;
     }
 
-    public string ExecuteScalar(string query, MySqlParameter[] parameters)
+    public int GetLastInsertedId(MySqlConnection conn)
     {
-        string result = null;
-        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        using (MySqlCommand cmd = new MySqlCommand("SELECT LAST_INSERT_ID();", conn))
         {
-            conn.Open();
-            using (MySqlCommand cmd = new MySqlCommand(query, conn))
-            {
-                if (parameters != null)
-                {
-                    cmd.Parameters.AddRange(parameters);
-                }
-
-                object scalarResult = cmd.ExecuteScalar();
-                if (scalarResult != null)
-                {
-                    result = scalarResult.ToString(); 
-                }
-            }
-        }
-        return result;
-    }
-
-
-    public bool ExecuteQuery(string query, MySqlParameter[] parameters)
-    {
-        try
-        {
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    if (parameters != null)
-                        cmd.Parameters.AddRange(parameters);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Database Error: " + ex.Message);
-            return false;
+            return Convert.ToInt32(cmd.ExecuteScalar());
         }
     }
 }
