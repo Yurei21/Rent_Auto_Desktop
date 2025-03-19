@@ -27,7 +27,7 @@ namespace Car_Rental_System
             AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };
             hForm.FormBorderStyle = FormBorderStyle.None;
             this.panel3.Controls.Add(hForm);
-            hForm.Show();   
+            hForm.Show();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -41,7 +41,10 @@ namespace Car_Rental_System
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            AddCars addCarsForm = new AddCars();
+            addCarsForm.Dock = DockStyle.Fill;
+            panel3.Controls.Clear();
+            panel3.Controls.Add(addCarsForm);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -51,7 +54,11 @@ namespace Car_Rental_System
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
+        }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

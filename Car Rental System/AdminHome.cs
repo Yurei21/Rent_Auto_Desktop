@@ -17,9 +17,5 @@ namespace Car_Rental_System
             InitializeComponent();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

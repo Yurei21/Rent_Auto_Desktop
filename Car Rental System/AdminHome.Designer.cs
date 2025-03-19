@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label6 = new Label();
-            closeButton = new Button();
             SuspendLayout();
             // 
             // label6
@@ -43,29 +42,15 @@
             label6.TabIndex = 7;
             label6.Text = "Home";
             // 
-            // closeButton
-            // 
-            closeButton.FlatAppearance.BorderSize = 0;
-            closeButton.FlatStyle = FlatStyle.Flat;
-            closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(754, 12);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
-            closeButton.TabIndex = 11;
-            closeButton.Text = "X";
-            closeButton.UseVisualStyleBackColor = true;
-            closeButton.Click += closeButton_Click;
-            // 
-            // Home
+            // AdminHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(791, 577);
-            Controls.Add(closeButton);
             Controls.Add(label6);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Home";
+            Name = "AdminHome";
             Text = "Home";
             ResumeLayout(false);
             PerformLayout();
@@ -74,6 +59,5 @@
         #endregion
 
         private Label label6;
-        private Button closeButton;
     }
 }

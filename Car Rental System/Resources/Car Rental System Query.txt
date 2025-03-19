@@ -29,6 +29,7 @@ CREATE TABLE unhashedAdmin (
 CREATE TABLE Vehicles (
     vehicle_id INT AUTO_INCREMENT PRIMARY KEY,
     model VARCHAR(100) NOT NULL,
+    car_url VARCHAR(255) NOT NULL,
     brand VARCHAR(50) NOT NULL,
     year INT NOT NULL,
     rent_price DECIMAL(10,2) NOT NULL,

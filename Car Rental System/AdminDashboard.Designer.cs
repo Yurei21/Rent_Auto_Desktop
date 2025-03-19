@@ -39,6 +39,7 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            closeButton = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -181,11 +182,24 @@
             // panel3
             // 
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(166, 0);
+            panel3.Location = new Point(166, 43);
             panel3.Name = "panel3";
-            panel3.Size = new Size(791, 577);
+            panel3.Size = new Size(791, 534);
             panel3.TabIndex = 12;
             panel3.Paint += panel3_Paint;
+            // 
+            // closeButton
+            // 
+            closeButton.FlatAppearance.BorderSize = 0;
+            closeButton.FlatStyle = FlatStyle.Flat;
+            closeButton.ForeColor = Color.White;
+            closeButton.Location = new Point(920, 12);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(25, 25);
+            closeButton.TabIndex = 13;
+            closeButton.Text = "X";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // AdminDashboard
             // 
@@ -193,6 +207,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(957, 577);
+            Controls.Add(closeButton);
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -218,5 +233,6 @@
         private Label label1;
         private Button button5;
         private Panel panel3;
+        private Button closeButton;
     }
 }
