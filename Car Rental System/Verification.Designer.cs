@@ -32,7 +32,13 @@
             pictureBox1 = new PictureBox();
             label6 = new Label();
             Register = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // closeButton
@@ -78,7 +84,7 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(721, 304);
+            Register.Location = new Point(721, 285);
             Register.Name = "Register";
             Register.Size = new Size(177, 46);
             Register.TabIndex = 13;
@@ -86,12 +92,68 @@
             Register.UseVisualStyleBackColor = false;
             Register.Click += Register_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SlateBlue;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.Red;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(150, 401);
+            button1.Name = "button1";
+            button1.Size = new Size(181, 71);
+            button1.TabIndex = 13;
+            button1.Text = "Upload your \r\nDriver's License";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.SlateBlue;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderColor = Color.Red;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(437, 401);
+            button2.Name = "button2";
+            button2.Size = new Size(189, 71);
+            button2.TabIndex = 13;
+            button2.Text = "Upload your\r\nNational ID";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new Point(104, 199);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(270, 165);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 14;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Location = new Point(396, 199);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(270, 165);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 14;
+            pictureBox3.TabStop = false;
+            // 
             // Verification
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(941, 538);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(Register);
             Controls.Add(label6);
             Controls.Add(pictureBox1);
@@ -100,6 +162,8 @@
             Name = "Verification";
             Text = "Verification";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -110,5 +174,9 @@
         private PictureBox pictureBox1;
         private Label label6;
         private Button Register;
+        private Button button1;
+        private Button button2;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }

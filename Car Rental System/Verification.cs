@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
     public partial class Verification : Form
     {
         private int userId;
+        private string idCardPath = "";
+        private string dPath = "";
+        private DatabaseHelper dbHelper = new DatabaseHelper();
         public Verification(int userId)
         {
             InitializeComponent();
@@ -24,9 +29,70 @@ namespace Car_Rental_System
             this.Close();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Select a picture of your Driver's License",
+                Filter = "Image Files|*.jpg;*.png;*.jpeg;"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                dPath = ofd.FileName;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Select a picture of your National ID",
+                Filter = "Image Files|*.jpg;*.png;*.jpeg;"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                idCardPath = ofd.FileName;
+            }
+        }
+
         private void Register_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(idCardPath) || string.IsNullOrEmpty(dPath))
+            {
+                MessageBox.Show("Please upload both documents.");
+                return;
+            }
 
+            using (MySqlConnection conn = dbHelper.GetConnection())
+            {
+                conn.Open();
+
+                
+                SaveDocument(conn, "ID Card", idCardPath);
+
+                
+                SaveDocument(conn, "Driver License", dPath);
+            }
+
+            MessageBox.Show("Documents uploaded successfully!");
+            UserDashboard userDash = new UserDashboard();
+            userDash.Show();
+            this.Hide();
         }
+
+        private void SaveDocument(MySqlConnection conn, string docType, string filePath)
+        {
+            string query = "INSERT INTO Documents (user_id, document_type, document_url) VALUES (@user_id, @document_type, @document_url)";
+            MySqlParameter[] parameters = {
+                new MySqlParameter("@user_id", userId),
+                new MySqlParameter("@document_type", docType),
+                new MySqlParameter("@document_url", Path.GetFileName(filePath))
+            };
+
+            dbHelper.ExecuteQuery(query, parameters);
+        }
+
     }
 }
