@@ -22,6 +22,13 @@ namespace Car_Rental_System
             hForm.Show();
         }
 
+        public void LoadUserControl (UserControl control)
+        {
+            panel3.Controls.Clear();
+            control.Dock = DockStyle.Fill;   
+            panel3.Controls.Add(control);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };

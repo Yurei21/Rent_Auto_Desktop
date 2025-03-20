@@ -59,6 +59,23 @@ public class DatabaseHelper
             return false;
         }
     }
+
+    public void ExecuteNonQuery(string query, MySqlParameter[] parameters)
+    {
+        using (var conn = GetConnection())
+        {
+            conn.Open();
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+
     public int ExecuteScalarQuery(string query, MySqlParameter[] parameters)
     {
         int result = 0;

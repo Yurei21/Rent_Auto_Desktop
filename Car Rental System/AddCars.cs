@@ -83,17 +83,9 @@ namespace Car_Rental_System
 
             if (carId > 0)
             {
-                string queryAdmin = "INSERT INTO maintenance (vehicle_id) VALUES (@vehicle_id)";
-                MySqlParameter[] ad =
-                {
-                    new MySqlParameter("@vehicle_id", carId)
-                };
-                db.ExecuteQuery(queryAdmin, ad);
-
                 MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AddMaintenance addM = new AddMaintenance(carId);
-                addM.Show();
-                this.Hide();
+                AdminDashboard dashboard = (AdminDashboard)this.ParentForm;
+                dashboard.LoadUserControl(new AddMaintenance(carId));
             }
             else
             {
