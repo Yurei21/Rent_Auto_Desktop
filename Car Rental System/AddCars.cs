@@ -41,7 +41,6 @@ namespace Car_Rental_System
             int year;
             decimal rentPrice;
 
-            // Validate year and price inputs
             if (!int.TryParse(textBox3.Text, out year))
             {
                 MessageBox.Show("Please enter a valid year.");
@@ -54,8 +53,8 @@ namespace Car_Rental_System
                 return;
             }
 
-            string status = comboBox1.SelectedItem?.ToString() ?? "Available"; // Default to "Available" if nothing is selected
-            string carUrl = carPath; // Path from file upload
+            string status = comboBox1.SelectedItem?.ToString() ?? "Available"; 
+            string carUrl = carPath; 
 
             string query = "INSERT INTO vehicles (model, car_url, brand, year, rent_price, availability_status) VALUES (@model, @car_url, @brand, @year, @rent_price, @availability_status)";
 
