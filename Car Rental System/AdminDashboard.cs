@@ -38,7 +38,10 @@ namespace Car_Rental_System
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AdminViewCar viewCarsControl = new AdminViewCar();
+            panel3.Controls.Clear();
+            panel3.Controls.Add(viewCarsControl);
+            viewCarsControl.Dock = DockStyle.Fill;
         }
 
         private void button3_Click(object sender, EventArgs e)
