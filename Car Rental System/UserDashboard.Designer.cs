@@ -157,6 +157,7 @@
             closeButton.TabIndex = 14;
             closeButton.Text = "X";
             closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // UserDashboard
             // 

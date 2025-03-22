@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
@@ -38,8 +39,42 @@ namespace Car_Rental_System
 
         private void signinButton_Click(object sender, EventArgs e)
         {
-            String username = textBox1.Text;
-            String password = textBox2.Text;
+            String email = textBox1.Text.Trim();
+            String password = textBox2.Text.Trim();
+
+            if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please input");
+                return;
+            }
+
+            DatabaseHelper db = new DatabaseHelper();
+            string query = "SELECT password FROM users WHERE email = @email";
+
+            MySqlParameter[] param = new MySqlParameter[] { new MySqlParameter("@email", email) };
+            object result = db.ExecuteScalar(query, param);
+
+
+            if (result != null && result is string hashedPassword)
+            {
+                if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                {
+                    MessageBox.Show("Logged in Successfully");
+                    UserDashboard ud = new UserDashboard();
+                    ud.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Password");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Username Not Found or Password Retrieval Failed");
+            }
+
         }
+
     }
 }

@@ -12,7 +12,7 @@ public class DatabaseHelper
         return new MySqlConnection(connectionString);
     }
 
-    
+
     public object ExecuteScalar(string query, MySqlParameter[] parameters = null)
     {
         try
@@ -23,18 +23,37 @@ public class DatabaseHelper
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     if (parameters != null)
+                    {
                         cmd.Parameters.AddRange(parameters);
+                    }
 
-                    return cmd.ExecuteScalar(); 
+                    // Debugging: Print Query & Parameters
+                    System.Diagnostics.Debug.WriteLine("Executing Query: " + query);
+                    if (parameters != null)
+                    {
+                        foreach (var param in parameters)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Param: {param.ParameterName} = '{param.Value}'");
+                        }
+                    }
+
+                    object result = cmd.ExecuteScalar();
+
+                    // Debugging: Print Result
+                    System.Diagnostics.Debug.WriteLine("Query Result: " + (result != null ? result.ToString() : "NULL"));
+
+                    return result;
                 }
             }
         }
         catch (Exception ex)
         {
             MessageBox.Show("Database Error: " + ex.Message);
+            System.Diagnostics.Debug.WriteLine("Database Exception: " + ex.ToString());
             return null;
         }
     }
+
 
     public bool ExecuteQuery(string query, MySqlParameter[] parameters = null)
     {

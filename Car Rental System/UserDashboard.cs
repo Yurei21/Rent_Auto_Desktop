@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Car_Rental_System
 {
-    public partial class UserDashboard: Form
+    public partial class UserDashboard : Form
     {
         public UserDashboard()
         {
             InitializeComponent();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

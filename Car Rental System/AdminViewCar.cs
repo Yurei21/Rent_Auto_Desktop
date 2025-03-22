@@ -18,6 +18,7 @@ namespace Car_Rental_System
         public AdminViewCar()
         {
             InitializeComponent();
+            loadCars();
         }
 
         public void loadCars()
@@ -39,14 +40,15 @@ namespace Car_Rental_System
                         string imagePath = dr["car_url"].ToString();
                         decimal price = Convert.ToDecimal(dr["rent_price"]);
                         string status = dr["availability_status"].ToString();
+                        Console.WriteLine($"Adding Car: {model}, {brand}");
 
                         CarCard carCard = new CarCard(model, brand, imagePath, price, status);
+
                         flowLayoutPanel1.Controls.Add(carCard);
                     }
                 }
             }
 
         }
-
     }
 }

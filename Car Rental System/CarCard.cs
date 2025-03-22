@@ -36,5 +36,9 @@ namespace Car_Rental_System
             : Color.Orange;
         }
 
+        private void Register_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

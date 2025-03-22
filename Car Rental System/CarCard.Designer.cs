@@ -33,6 +33,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            Register = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -89,11 +90,29 @@
             label4.TabIndex = 1;
             label4.Text = "Status";
             // 
+            // Register
+            // 
+            Register.BackColor = Color.SlateBlue;
+            Register.Cursor = Cursors.Hand;
+            Register.FlatAppearance.BorderColor = Color.Red;
+            Register.FlatAppearance.BorderSize = 0;
+            Register.FlatStyle = FlatStyle.Flat;
+            Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Register.ForeColor = Color.White;
+            Register.Location = new Point(46, 266);
+            Register.Name = "Register";
+            Register.Size = new Size(192, 27);
+            Register.TabIndex = 17;
+            Register.Text = "Modify Car";
+            Register.UseVisualStyleBackColor = false;
+            Register.Click += Register_Click;
+            // 
             // CarCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(Register);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -113,5 +132,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Button Register;
     }
 }
