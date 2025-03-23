@@ -14,11 +14,33 @@ namespace Car_Rental_System
     public partial class AdminViewCar : UserControl
     {
         DatabaseHelper db = new DatabaseHelper();
+        int vehicleId;
 
-        public AdminViewCar()
+        public AdminViewCar(AdminDashboard dashboard)
         {
             InitializeComponent();
             loadCars();
+        }
+
+        private int GetVehicleIdFromDatabase(string model, string brand)
+        {
+            int vehicleId = -1;
+            string query = "SELECT vehicle_id FROM Vehicles WHERE model = @model AND brand = @brand LIMIT 1";
+
+            MySqlParameter[] parameters = {
+                new MySqlParameter("@model", model),
+                new MySqlParameter("@brand", brand)
+            };
+
+            DatabaseHelper db = new DatabaseHelper();
+            object result = db.ExecuteScalar(query, parameters);
+
+            if (result != null)
+            {
+                vehicleId = Convert.ToInt32(result);
+            }
+
+            return vehicleId;
         }
 
         public void loadCars()
@@ -42,8 +64,11 @@ namespace Car_Rental_System
                         string status = dr["availability_status"].ToString();
                         Console.WriteLine($"Adding Car: {model}, {brand}");
 
-                        CarCard carCard = new CarCard(model, brand, imagePath, price, status);
+                        vehicleId = GetVehicleIdFromDatabase(model, brand);
 
+                        AdminCarCard carCard = new AdminCarCard(model, brand, imagePath, price, status);
+                        AdminDashboard dashboard = (AdminDashboard)this.ParentForm;
+                        AdminEditCar carEd = new AdminEditCar(dashboard, vehicleId, model, brand, imagePath, price, status);
                         flowLayoutPanel1.Controls.Add(carCard);
                     }
                 }

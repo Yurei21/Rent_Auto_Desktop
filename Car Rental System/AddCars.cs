@@ -85,7 +85,7 @@ namespace Car_Rental_System
             {
                 MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 AdminDashboard dashboard = (AdminDashboard)this.ParentForm;
-                dashboard.LoadUserControl(new AddMaintenance(carId));
+                dashboard.LoadUserControl(new AddPastMaintenance(carId));
             }
             else
             {

@@ -15,11 +15,6 @@ namespace Car_Rental_System
         public AdminDashboard()
         {
             InitializeComponent();
-
-            AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };
-            hForm.FormBorderStyle = FormBorderStyle.None;
-            this.panel3.Controls.Add(hForm);
-            hForm.Show();
         }
 
         public void LoadUserControl (UserControl control)
@@ -31,14 +26,10 @@ namespace Car_Rental_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdminHome hForm = new AdminHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, };
-            hForm.FormBorderStyle = FormBorderStyle.None;
-            this.panel3.Controls.Add(hForm);
-            hForm.Show();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            AdminViewCar viewCarsControl = new AdminViewCar();
+            AdminViewCar viewCarsControl = new AdminViewCar(this);
             panel3.Controls.Clear();
             panel3.Controls.Add(viewCarsControl);
             viewCarsControl.Dock = DockStyle.Fill;

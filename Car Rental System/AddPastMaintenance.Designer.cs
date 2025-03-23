@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System
 {
-    partial class CarCard
+    partial class AddPastMaintenance
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,67 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            label6 = new Label();
             label1 = new Label();
+            textBox1 = new TextBox();
             label2 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             label3 = new Label();
-            label4 = new Label();
+            textBox2 = new TextBox();
             Register = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // label6
             // 
-            pictureBox1.Location = new Point(43, 17);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(195, 128);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            label6.AutoSize = true;
+            label6.Font = new Font("Heavitas", 35F);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(3, 14);
+            label6.Name = "label6";
+            label6.Size = new Size(635, 61);
+            label6.TabIndex = 14;
+            label6.Text = "Maintenance record";
+            label6.TextAlign = ContentAlignment.TopCenter;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(43, 163);
+            label1.Location = new Point(195, 174);
             label1.Name = "label1";
-            label1.Size = new Size(51, 16);
-            label1.TabIndex = 1;
-            label1.Text = "Brand";
+            label1.Size = new Size(161, 16);
+            label1.TabIndex = 22;
+            label1.Text = "Date of Maintenance";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(195, 249);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(378, 23);
+            textBox1.TabIndex = 23;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(43, 189);
+            label2.Location = new Point(195, 230);
             label2.Name = "label2";
-            label2.Size = new Size(52, 16);
-            label2.TabIndex = 1;
-            label2.Text = "Model";
+            label2.Size = new Size(98, 16);
+            label2.TabIndex = 22;
+            label2.Text = "Information";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(195, 193);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(378, 23);
+            dateTimePicker1.TabIndex = 24;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(43, 216);
+            label3.Location = new Point(195, 287);
             label3.Name = "label3";
-            label3.Size = new Size(44, 16);
-            label3.TabIndex = 1;
-            label3.Text = "price";
+            label3.Size = new Size(41, 16);
+            label3.TabIndex = 22;
+            label3.Text = "Cost";
             // 
-            // label4
+            // textBox2
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(43, 243);
-            label4.Name = "label4";
-            label4.Size = new Size(55, 16);
-            label4.TabIndex = 1;
-            label4.Text = "Status";
+            textBox2.Location = new Point(195, 306);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(378, 23);
+            textBox2.TabIndex = 23;
             // 
             // Register
             // 
@@ -99,39 +113,42 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(46, 266);
+            Register.Location = new Point(300, 364);
             Register.Name = "Register";
-            Register.Size = new Size(192, 27);
-            Register.TabIndex = 17;
-            Register.Text = "Modify Car";
+            Register.Size = new Size(181, 46);
+            Register.TabIndex = 25;
+            Register.Text = "Submit";
             Register.UseVisualStyleBackColor = false;
             Register.Click += Register_Click;
             // 
-            // CarCard
+            // AddMaintenance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             Controls.Add(Register);
-            Controls.Add(label4);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(textBox2);
             Controls.Add(label3);
+            Controls.Add(textBox1);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
-            Name = "CarCard";
-            Size = new Size(283, 308);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Controls.Add(label6);
+            Name = "AddMaintenance";
+            Size = new Size(775, 538);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private Label label6;
         private Label label1;
+        private TextBox textBox1;
         private Label label2;
+        private DateTimePicker dateTimePicker1;
         private Label label3;
-        private Label label4;
+        private TextBox textBox2;
         private Button Register;
     }
 }

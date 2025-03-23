@@ -12,10 +12,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Car_Rental_System
 {
-    public partial class AddMaintenance : UserControl
+    public partial class AddPastMaintenance : UserControl
     {
         private int carId;
-        public AddMaintenance(int carId)
+        public AddPastMaintenance(int carId)
         {
             InitializeComponent();
             this.carId = carId;
@@ -26,6 +26,7 @@ namespace Car_Rental_System
             DatabaseHelper db = new DatabaseHelper();
             string info = textBox1.Text;
             decimal cost;
+            string date = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
             if (!decimal.TryParse(textBox2.Text, out cost)) 
             {
@@ -33,11 +34,12 @@ namespace Car_Rental_System
                 return;
             }
 
-            string query = "INSERT INTO maintenance (vehicle_id, details, cost) VALUES (@vehicle_id, @details, @cost)";
+            string query = "INSERT INTO maintenance (vehicle_id, maintenance_date, details, cost) VALUES (@vehicle_id, @date, @details, @cost)";
 
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@vehicle_id", carId),
+                new MySqlParameter("@date", date),
                 new MySqlParameter("@details", info),
                 new MySqlParameter("@cost", cost)
             };
@@ -45,6 +47,7 @@ namespace Car_Rental_System
             if (db.ExecuteQuery(query, parameters)) 
             {
                 MessageBox.Show("Maintenance record added successfully.");
+                UpdateVehicleStatus(carId);
             }
             else
             {
@@ -52,5 +55,29 @@ namespace Car_Rental_System
             }
 
         }
+
+        private void UpdateVehicleStatus(int carId)
+        {
+            string query = "SELECT COUNT(*) FROM Maintenance WHERE vehicle_id = @vehicleId AND DATE(maintenance_date) = CURDATE()";
+
+            MySqlParameter[] parameters = {
+                new MySqlParameter("@vehicleId", carId)
+            };
+
+            DatabaseHelper db = new DatabaseHelper();
+            int count = db.ExecuteScalarQuery(query, parameters); 
+
+            string status = (count > 0) ? "Under Maintenance" : "Available";
+
+            string updateQuery = "UPDATE Vehicles SET availability_status = @status WHERE vehicle_id = @vehicleId";
+
+            MySqlParameter[] updateParams = {
+                new MySqlParameter("@status", status),
+                new MySqlParameter("@vehicleId", carId)
+            };
+
+            db.ExecuteQuery(updateQuery, updateParams);
+        }
+
     }
 }
