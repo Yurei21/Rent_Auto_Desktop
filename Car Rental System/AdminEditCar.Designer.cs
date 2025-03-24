@@ -62,9 +62,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(33, 445);
+            label4.Location = new Point(38, 593);
             label4.Name = "label4";
-            label4.Size = new Size(55, 16);
+            label4.Size = new Size(72, 20);
             label4.TabIndex = 2;
             label4.Text = "Status";
             // 
@@ -73,9 +73,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(33, 374);
+            label3.Location = new Point(38, 499);
             label3.Name = "label3";
-            label3.Size = new Size(44, 16);
+            label3.Size = new Size(58, 20);
             label3.TabIndex = 3;
             label3.Text = "price";
             // 
@@ -84,9 +84,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(33, 335);
+            label2.Location = new Point(38, 447);
             label2.Name = "label2";
-            label2.Size = new Size(52, 16);
+            label2.Size = new Size(68, 20);
             label2.TabIndex = 4;
             label2.Text = "Model";
             // 
@@ -95,17 +95,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 25F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(33, 45);
+            label1.Location = new Point(38, 60);
             label1.Name = "label1";
-            label1.Size = new Size(152, 45);
+            label1.Size = new Size(183, 54);
             label1.TabIndex = 5;
             label1.Text = "Brand";
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(33, 93);
+            pictureBox1.Location = new Point(38, 124);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(293, 178);
+            pictureBox1.Size = new Size(335, 237);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -115,40 +116,44 @@
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 9F);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(34, 294);
+            label5.Location = new Point(39, 392);
             label5.Name = "label5";
-            label5.Size = new Size(51, 16);
+            label5.Size = new Size(66, 20);
             label5.TabIndex = 5;
             label5.Text = "Brand";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(91, 291);
+            textBox1.Location = new Point(104, 388);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
+            textBox1.Size = new Size(269, 27);
             textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(91, 332);
+            textBox2.Location = new Point(104, 443);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(236, 23);
+            textBox2.Size = new Size(269, 27);
             textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(91, 371);
+            textBox3.Location = new Point(104, 495);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(236, 23);
+            textBox3.Size = new Size(269, 27);
             textBox3.TabIndex = 7;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Available", "Rented", "Under Maintenance" });
-            comboBox1.Location = new Point(91, 442);
+            comboBox1.Location = new Point(104, 589);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(236, 23);
+            comboBox1.Size = new Size(269, 28);
             comboBox1.TabIndex = 8;
             // 
             // Modify
@@ -160,10 +165,11 @@
             Modify.FlatStyle = FlatStyle.Flat;
             Modify.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Modify.ForeColor = Color.White;
-            Modify.Location = new Point(33, 483);
+            Modify.Location = new Point(38, 644);
+            Modify.Margin = new Padding(3, 4, 3, 4);
             Modify.Name = "Modify";
             Modify.RightToLeft = RightToLeft.No;
-            Modify.Size = new Size(104, 27);
+            Modify.Size = new Size(119, 36);
             Modify.TabIndex = 18;
             Modify.Text = "Modify";
             Modify.UseVisualStyleBackColor = false;
@@ -178,10 +184,11 @@
             DELETE.FlatStyle = FlatStyle.Flat;
             DELETE.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DELETE.ForeColor = Color.White;
-            DELETE.Location = new Point(223, 483);
+            DELETE.Location = new Point(255, 644);
+            DELETE.Margin = new Padding(3, 4, 3, 4);
             DELETE.Name = "DELETE";
             DELETE.RightToLeft = RightToLeft.No;
-            DELETE.Size = new Size(104, 27);
+            DELETE.Size = new Size(119, 36);
             DELETE.TabIndex = 18;
             DELETE.Text = "DELETE";
             DELETE.UseVisualStyleBackColor = false;
@@ -193,9 +200,11 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = Color.White;
-            dataGridView1.Location = new Point(368, 163);
+            dataGridView1.Location = new Point(421, 217);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(405, 178);
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(463, 237);
             dataGridView1.TabIndex = 19;
             // 
             // label6
@@ -203,9 +212,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Heavitas", 20F);
             label6.ForeColor = Color.Tomato;
-            label6.Location = new Point(391, 124);
+            label6.Location = new Point(415, 168);
             label6.Name = "label6";
-            label6.Size = new Size(364, 36);
+            label6.Size = new Size(469, 45);
             label6.TabIndex = 5;
             label6.Text = "maintenance Record";
             // 
@@ -218,10 +227,11 @@
             Maintenance.FlatStyle = FlatStyle.Flat;
             Maintenance.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Maintenance.ForeColor = Color.White;
-            Maintenance.Location = new Point(368, 480);
+            Maintenance.Location = new Point(421, 640);
+            Maintenance.Margin = new Padding(3, 4, 3, 4);
             Maintenance.Name = "Maintenance";
             Maintenance.RightToLeft = RightToLeft.No;
-            Maintenance.Size = new Size(411, 27);
+            Maintenance.Size = new Size(470, 36);
             Maintenance.TabIndex = 18;
             Maintenance.Text = "Add a maintenance record";
             Maintenance.UseVisualStyleBackColor = false;
@@ -232,17 +242,18 @@
             label7.AutoSize = true;
             label7.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(33, 410);
+            label7.Location = new Point(38, 547);
             label7.Name = "label7";
-            label7.Size = new Size(41, 16);
+            label7.Size = new Size(53, 20);
             label7.TabIndex = 3;
             label7.Text = "Year";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(91, 407);
+            textBox4.Location = new Point(104, 543);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(236, 23);
+            textBox4.Size = new Size(269, 27);
             textBox4.TabIndex = 7;
             // 
             // label8
@@ -252,7 +263,7 @@
             label8.ForeColor = Color.SlateBlue;
             label8.Location = new Point(3, 0);
             label8.Name = "label8";
-            label8.Size = new Size(89, 26);
+            label8.Size = new Size(113, 33);
             label8.TabIndex = 5;
             label8.Text = "Model";
             // 
@@ -261,9 +272,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(417, 767);
+            label9.Location = new Point(477, 1023);
             label9.Name = "label9";
-            label9.Size = new Size(52, 16);
+            label9.Size = new Size(68, 20);
             label9.TabIndex = 4;
             label9.Text = "Model";
             // 
@@ -272,17 +283,18 @@
             label10.AutoSize = true;
             label10.Font = new Font("Heavitas", 9F);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(369, 348);
+            label10.Location = new Point(422, 464);
             label10.Name = "label10";
-            label10.Size = new Size(102, 32);
+            label10.Size = new Size(130, 40);
             label10.TabIndex = 5;
             label10.Text = "Maintenance\r\ndate\r\n";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(486, 353);
+            dateTimePicker1.Location = new Point(555, 471);
+            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(233, 23);
+            dateTimePicker1.Size = new Size(266, 27);
             dateTimePicker1.TabIndex = 20;
             // 
             // label11
@@ -290,17 +302,18 @@
             label11.AutoSize = true;
             label11.Font = new Font("Heavitas", 9F);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(372, 397);
+            label11.Location = new Point(425, 529);
             label11.Name = "label11";
-            label11.Size = new Size(59, 16);
+            label11.Size = new Size(77, 20);
             label11.TabIndex = 5;
             label11.Text = "Details";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(445, 394);
+            textBox5.Location = new Point(509, 525);
+            textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(274, 23);
+            textBox5.Size = new Size(313, 27);
             textBox5.TabIndex = 21;
             // 
             // label12
@@ -308,22 +321,23 @@
             label12.AutoSize = true;
             label12.Font = new Font("Heavitas", 9F);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(372, 440);
+            label12.Location = new Point(425, 587);
             label12.Name = "label12";
-            label12.Size = new Size(41, 16);
+            label12.Size = new Size(54, 20);
             label12.TabIndex = 5;
             label12.Text = "Cost";
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(445, 437);
+            textBox6.Location = new Point(509, 583);
+            textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(274, 23);
+            textBox6.Size = new Size(313, 27);
             textBox6.TabIndex = 21;
             // 
             // AdminEditCar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             Controls.Add(textBox6);
@@ -351,8 +365,9 @@
             Controls.Add(label10);
             Controls.Add(label6);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AdminEditCar";
-            Size = new Size(791, 534);
+            Size = new Size(904, 712);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

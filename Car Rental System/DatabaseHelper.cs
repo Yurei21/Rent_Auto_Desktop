@@ -27,7 +27,6 @@ public class DatabaseHelper
                         cmd.Parameters.AddRange(parameters);
                     }
 
-                    // Debugging: Print Query & Parameters
                     System.Diagnostics.Debug.WriteLine("Executing Query: " + query);
                     if (parameters != null)
                     {
@@ -39,7 +38,6 @@ public class DatabaseHelper
 
                     object result = cmd.ExecuteScalar();
 
-                    // Debugging: Print Result
                     System.Diagnostics.Debug.WriteLine("Query Result: " + (result != null ? result.ToString() : "NULL"));
 
                     return result;
@@ -124,5 +122,26 @@ public class DatabaseHelper
         {
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
+    }
+
+    public int GetVehicleIdFromDatabase(string model, string brand)
+    {
+        int vehicleId = -1;
+        string query = "SELECT vehicle_id FROM Vehicles WHERE model = @model AND brand = @brand LIMIT 1";
+
+        MySqlParameter[] parameters = {
+                new MySqlParameter("@model", model),
+                new MySqlParameter("@brand", brand)
+            };
+
+        DatabaseHelper db = new DatabaseHelper();
+        object result = db.ExecuteScalar(query, parameters);
+
+        if (result != null)
+        {
+            vehicleId = Convert.ToInt32(result);
+        }
+
+        return vehicleId;
     }
 }

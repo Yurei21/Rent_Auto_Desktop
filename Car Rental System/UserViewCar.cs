@@ -1,25 +1,25 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
-    public partial class AdminViewCar : UserControl
+    public partial class UserViewCar : UserControl
     {
         int vehicleId;
-
-        public AdminViewCar(AdminDashboard dashboard)
+        public UserViewCar(UserDashboard userDashboard)
         {
             InitializeComponent();
             loadCars();
-        }
+        }   
+        
         public void loadCars()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -43,16 +43,14 @@ namespace Car_Rental_System
 
                         vehicleId = db.GetVehicleIdFromDatabase(model, brand);
 
-                        AdminCarCard carCard = new AdminCarCard(model, brand, imagePath, price, status);
-                        AdminDashboard dashboard = (AdminDashboard)this.ParentForm;
-                        AdminEditCar carEd = new AdminEditCar(dashboard, vehicleId, model, brand, imagePath, price, status);
+                        UserCarCard carCard = new UserCarCard(model, brand, imagePath, price, status);
+
+                        UserDashboard dashboard = (UserDashboard)this.ParentForm;
                         flowLayoutPanel1.Controls.Add(carCard);
                     }
                 }
             }
 
         }
-
-
     }
 }

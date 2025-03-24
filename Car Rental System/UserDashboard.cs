@@ -24,11 +24,17 @@ namespace Car_Rental_System
             panel3.Controls.Add(control);
         }
 
-
-
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UserViewCar userViewCar = new UserViewCar(this);
+            panel3.Controls.Clear();
+            panel3.Controls.Add(userViewCar);
+            userViewCar.Dock = DockStyle.Fill;
         }
     }
 }

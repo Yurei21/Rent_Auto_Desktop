@@ -47,6 +47,8 @@ CREATE TABLE Rentals (
     total_cost DECIMAL(10,2) NOT NULL,
     payment_status ENUM('Pending', 'Paid') DEFAULT 'Pending',
     status ENUM('Ongoing', 'Completed') DEFAULT 'Ongoing',
+    carstatus ENUM('In-use', 'Returned') DEFAULT 'In-use',
+    code INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (vehicle_id) REFERENCES Vehicles(vehicle_id) ON DELETE CASCADE
 );
@@ -58,7 +60,6 @@ CREATE TABLE Payments (
     amount_paid DECIMAL(10,2) NOT NULL,
     payment_method ENUM('Cash', 'Credit Card', 'Online') NOT NULL,
     payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    transaction_status ENUM('Successful', 'Failed', 'Pending') DEFAULT 'Pending',
     FOREIGN KEY (rental_id) REFERENCES Rentals(rental_id) ON DELETE CASCADE
 );
 

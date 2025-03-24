@@ -1,6 +1,6 @@
 ﻿namespace Car_Rental_System
 {
-    partial class AdminViewCar
+    partial class UserViewCar
     {
         /// <summary> 
         /// Required designer variable.
@@ -37,32 +37,31 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 35F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 16);
+            label1.Location = new Point(13, 10);
             label1.Name = "label1";
             label1.Size = new Size(404, 76);
-            label1.TabIndex = 15;
+            label1.TabIndex = 16;
             label1.Text = "View Cars";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(1, 120);
+            flowLayoutPanel1.Location = new Point(0, 102);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(888, 599);
-            flowLayoutPanel1.TabIndex = 16;
+            flowLayoutPanel1.Size = new Size(904, 610);
+            flowLayoutPanel1.TabIndex = 17;
             // 
-            // AdminViewCar
+            // UserViewCar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "AdminViewCar";
-            Size = new Size(886, 717);
+            Name = "UserViewCar";
+            Size = new Size(904, 712);
             ResumeLayout(false);
             PerformLayout();
         }
