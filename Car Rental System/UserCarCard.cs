@@ -44,6 +44,11 @@ namespace Car_Rental_System
             label4.ForeColor = status == "Available" ? Color.Green
                 : status == "Rented" ? Color.Red
                 : Color.Orange;
+
+            if (status == "Rented" || status == "On Maintenance")
+            {
+                Register.Visible = false; 
+            }
         }
 
         private int GetVehicleIdFromDatabase(string model, string brand)
