@@ -17,6 +17,15 @@ namespace Car_Rental_System
             InitializeComponent();
         }
 
+        public void LoadUserControl(UserControl control)
+        {
+            panel3.Controls.Clear();
+            control.Dock = DockStyle.Fill;
+            panel3.Controls.Add(control);
+        }
+
+
+
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
