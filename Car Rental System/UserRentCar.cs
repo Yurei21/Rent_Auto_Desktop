@@ -99,7 +99,9 @@ namespace Car_Rental_System
             return success;
         }
 
+        private void Transaction_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

@@ -39,6 +39,7 @@
             label6 = new Label();
             comboBox1 = new ComboBox();
             label7 = new Label();
+            Transaction = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -90,25 +91,27 @@
             label4.AutoSize = true;
             label4.Font = new Font("Heavitas", 9F);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(16, 332);
+            label4.Location = new Point(395, 142);
             label4.Name = "label4";
             label4.Size = new Size(144, 16);
             label4.TabIndex = 19;
             label4.Text = "Starting Rent Date";
+            label4.Click += this.label4_Click;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(16, 353);
+            dateTimePicker1.Location = new Point(389, 163);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(293, 23);
+            dateTimePicker1.Size = new Size(337, 23);
             dateTimePicker1.TabIndex = 21;
+            dateTimePicker1.ValueChanged += this.dateTimePicker1_ValueChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 9F);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(16, 384);
+            label5.Location = new Point(395, 194);
             label5.Name = "label5";
             label5.Size = new Size(132, 16);
             label5.TabIndex = 19;
@@ -116,9 +119,9 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(16, 405);
+            dateTimePicker2.Location = new Point(389, 215);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(293, 23);
+            dateTimePicker2.Size = new Size(337, 23);
             dateTimePicker2.TabIndex = 21;
             // 
             // label6
@@ -126,7 +129,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Heavitas", 15F);
             label6.ForeColor = Color.Crimson;
-            label6.Location = new Point(18, 452);
+            label6.Location = new Point(391, 287);
             label6.Name = "label6";
             label6.Size = new Size(153, 26);
             label6.TabIndex = 17;
@@ -136,9 +139,9 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(400, 166);
+            comboBox1.Location = new Point(389, 382);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(331, 23);
+            comboBox1.Size = new Size(337, 23);
             comboBox1.TabIndex = 22;
             // 
             // label7
@@ -146,18 +149,37 @@
             label7.AutoSize = true;
             label7.Font = new Font("Heavitas", 15F);
             label7.ForeColor = Color.LimeGreen;
-            label7.Location = new Point(400, 137);
+            label7.Location = new Point(391, 353);
             label7.Name = "label7";
             label7.Size = new Size(218, 26);
             label7.TabIndex = 17;
             label7.Text = "Payment Method";
             label7.TextAlign = ContentAlignment.TopCenter;
             // 
+            // Transaction
+            // 
+            Transaction.BackColor = Color.SlateBlue;
+            Transaction.Cursor = Cursors.Hand;
+            Transaction.FlatAppearance.BorderColor = Color.Red;
+            Transaction.FlatAppearance.BorderSize = 0;
+            Transaction.FlatStyle = FlatStyle.Flat;
+            Transaction.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Transaction.ForeColor = Color.White;
+            Transaction.Location = new Point(389, 469);
+            Transaction.Name = "Transaction";
+            Transaction.RightToLeft = RightToLeft.No;
+            Transaction.Size = new Size(337, 27);
+            Transaction.TabIndex = 23;
+            Transaction.Text = "Pay now";
+            Transaction.UseVisualStyleBackColor = false;
+            Transaction.Click += Transaction_Click;
+            // 
             // UserRentCar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(Transaction);
             Controls.Add(comboBox1);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
@@ -190,5 +212,6 @@
         private Label label6;
         private ComboBox comboBox1;
         private Label label7;
+        private Button Transaction;
     }
 }
