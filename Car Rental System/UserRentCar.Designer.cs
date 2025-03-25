@@ -37,6 +37,8 @@
             label5 = new Label();
             dateTimePicker2 = new DateTimePicker();
             label6 = new Label();
+            comboBox1 = new ComboBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -131,11 +133,32 @@
             label6.Text = "Total Price";
             label6.TextAlign = ContentAlignment.TopCenter;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(400, 166);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(331, 23);
+            comboBox1.TabIndex = 22;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Heavitas", 15F);
+            label7.ForeColor = Color.LimeGreen;
+            label7.Location = new Point(400, 137);
+            label7.Name = "label7";
+            label7.Size = new Size(218, 26);
+            label7.TabIndex = 17;
+            label7.Text = "Payment Method";
+            label7.TextAlign = ContentAlignment.TopCenter;
+            // 
             // UserRentCar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(comboBox1);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
             Controls.Add(pictureBox1);
@@ -143,6 +166,7 @@
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(label3);
+            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
@@ -164,5 +188,7 @@
         private Label label5;
         private DateTimePicker dateTimePicker2;
         private Label label6;
+        private ComboBox comboBox1;
+        private Label label7;
     }
 }
