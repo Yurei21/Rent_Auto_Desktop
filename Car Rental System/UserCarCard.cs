@@ -15,8 +15,8 @@ namespace Car_Rental_System
     {
         string model, brand, imagePath, status;
         decimal price;
-        int vehicleId;
-        public UserCarCard(string model, string brand, string imagePath, decimal price, string status)
+        int vehicleId, userId;
+        public UserCarCard(int userId, string model, string brand, string imagePath, decimal price, string status)
         {
             InitializeComponent();
 
@@ -26,6 +26,7 @@ namespace Car_Rental_System
             this.imagePath = imagePath;
             this.status = status;
             this.price = price;
+            this.userId = userId;
 
             label1.Text = brand;
             label2.Text = model;
@@ -76,7 +77,7 @@ namespace Car_Rental_System
         {
             vehicleId = GetVehicleIdFromDatabase(model, brand);
             UserDashboard dashboard = (UserDashboard)this.ParentForm;
-            UserRentCar userRent = new UserRentCar(dashboard, vehicleId, model, brand, imagePath, price, status);
+            UserRentCar userRent = new UserRentCar(dashboard, userId, vehicleId, model, brand, imagePath, price, status);
             dashboard.LoadUserControl(userRent);
         }
     }

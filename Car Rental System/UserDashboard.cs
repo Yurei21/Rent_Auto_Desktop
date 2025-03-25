@@ -12,9 +12,11 @@ namespace Car_Rental_System
 {
     public partial class UserDashboard : Form
     {
-        public UserDashboard()
+        int userId;
+        public UserDashboard(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
         }
 
         public void LoadUserControl(UserControl control)
@@ -31,7 +33,7 @@ namespace Car_Rental_System
 
         private void button2_Click(object sender, EventArgs e)
         {
-            UserViewCar userViewCar = new UserViewCar(this);
+            UserViewCar userViewCar = new UserViewCar(this, userId);
             panel3.Controls.Clear();
             panel3.Controls.Add(userViewCar);
             userViewCar.Dock = DockStyle.Fill;

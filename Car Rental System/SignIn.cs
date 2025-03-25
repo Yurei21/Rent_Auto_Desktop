@@ -53,6 +53,9 @@ namespace Car_Rental_System
 
             MySqlParameter[] param = new MySqlParameter[] { new MySqlParameter("@email", email) };
             object result = db.ExecuteScalar(query, param);
+   
+            string id = "SELECT user_id FROM users WHERE email = @email";
+            int userId = db.ExecuteScalarQuery(id, param);
 
 
             if (result != null && result is string hashedPassword)
@@ -60,7 +63,7 @@ namespace Car_Rental_System
                 if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                 {
                     MessageBox.Show("Logged in Successfully");
-                    UserDashboard ud = new UserDashboard();
+                    UserDashboard ud = new UserDashboard(userId);
                     ud.Show();
                     this.Hide();
                 }

@@ -13,10 +13,11 @@ namespace Car_Rental_System
 {
     public partial class UserViewCar : UserControl
     {
-        int vehicleId;
-        public UserViewCar(UserDashboard userDashboard)
+        int vehicleId, userId;
+        public UserViewCar(UserDashboard userDashboard, int userId)
         {
             InitializeComponent();
+            this.userId = userId;   
             loadCars();
         }   
         

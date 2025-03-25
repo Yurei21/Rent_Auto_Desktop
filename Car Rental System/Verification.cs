@@ -77,7 +77,7 @@ namespace Car_Rental_System
             }
 
             MessageBox.Show("Documents uploaded successfully!");
-            UserDashboard userDash = new UserDashboard();
+            UserDashboard userDash = new UserDashboard(userId);
             userDash.Show();
             this.Hide();
         }
