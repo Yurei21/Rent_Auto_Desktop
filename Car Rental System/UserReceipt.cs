@@ -89,8 +89,8 @@ namespace Car_Rental_System
 
             MySqlParameter[] parameters = {
                 new MySqlParameter("@status", status),
-                new MySqlParameter("@model", label4.Text.Replace("Model: ", "").Trim()), // Extract model name
-                new MySqlParameter("@brand", label3.Text.Replace("Brand: ", "").Trim())  // Extract brand name
+                new MySqlParameter("@model", label4.Text.Replace("Model: ", "").Trim()), 
+                new MySqlParameter("@brand", label3.Text.Replace("Brand: ", "").Trim()) 
             };
 
             DatabaseHelper db = new DatabaseHelper();

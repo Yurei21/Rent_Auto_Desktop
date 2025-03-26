@@ -148,4 +148,34 @@ public class DatabaseHelper
         return (result != null) ? Convert.ToInt32(result) : -1;
     }
 
+    public DataTable ExecuteQueryWithDataTable(string query, MySqlParameter[] parameters = null)
+    {
+        DataTable dataTable = new DataTable();
+        try
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        return dataTable;
+    }
+
+
 }
