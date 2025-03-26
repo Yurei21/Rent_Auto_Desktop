@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             panel1 = new Panel();
+            button1 = new Button();
             button5 = new Button();
             button2 = new Button();
             panel2 = new Panel();
@@ -45,6 +46,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(24, 30, 54);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(panel2);
@@ -54,6 +56,22 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(166, 577);
             panel1.TabIndex = 12;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(0, 239);
+            button1.Name = "button1";
+            button1.Size = new Size(166, 54);
+            button1.TabIndex = 6;
+            button1.Text = "Return car";
+            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button1.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -171,5 +189,6 @@
         private PictureBox pictureBox1;
         private Panel panel3;
         private Button closeButton;
+        private Button button1;
     }
 }

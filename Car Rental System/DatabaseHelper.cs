@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Transactions;
 using System.Windows.Forms; 
 
 public class DatabaseHelper
@@ -77,19 +78,15 @@ public class DatabaseHelper
         }
     }
 
-    public void ExecuteNonQuery(string query, MySqlParameter[] parameters)
+    public void ExecuteNonQuery(string query, MySqlParameter[] parameters, MySqlConnection conn, MySqlTransaction transaction)
     {
-        using (var conn = GetConnection())
+        using (var cmd = new MySqlCommand(query, conn, transaction))
         {
-            conn.Open();
-            using (var cmd = new MySqlCommand(query, conn))
+            if (parameters != null)
             {
-                if (parameters != null)
-                {
-                    cmd.Parameters.AddRange(parameters);
-                }
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddRange(parameters);
             }
+            cmd.ExecuteNonQuery();
         }
     }
 
@@ -118,30 +115,37 @@ public class DatabaseHelper
 
     public int GetLastInsertedId(MySqlConnection conn)
     {
-        using (MySqlCommand cmd = new MySqlCommand("SELECT LAST_INSERT_ID();", conn))
+        try
         {
-            return Convert.ToInt32(cmd.ExecuteScalar());
+            using (MySqlCommand cmd = new MySqlCommand("SELECT LAST_INSERT_ID();", conn))
+            {
+                cmd.Transaction = conn.BeginTransaction(); 
+                object result = cmd.ExecuteScalar();
+                int lastId = (result != null && int.TryParse(result.ToString(), out int id)) ? id : -1;
+
+                MessageBox.Show($"DEBUG: Last Inserted ID = {lastId}");
+                return lastId;
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error retrieving last inserted ID: " + ex.Message);
+            return -1;
         }
     }
+
 
     public int GetVehicleIdFromDatabase(string model, string brand)
     {
-        int vehicleId = -1;
         string query = "SELECT vehicle_id FROM Vehicles WHERE model = @model AND brand = @brand LIMIT 1";
+            MySqlParameter[] parameters = {
+            new MySqlParameter("@model", model),
+            new MySqlParameter("@brand", brand)
+        };
 
-        MySqlParameter[] parameters = {
-                new MySqlParameter("@model", model),
-                new MySqlParameter("@brand", brand)
-            };
+        object result = ExecuteScalar(query, parameters); 
 
-        DatabaseHelper db = new DatabaseHelper();
-        object result = db.ExecuteScalar(query, parameters);
-
-        if (result != null)
-        {
-            vehicleId = Convert.ToInt32(result);
-        }
-
-        return vehicleId;
+        return (result != null) ? Convert.ToInt32(result) : -1;
     }
+
 }

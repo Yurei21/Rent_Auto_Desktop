@@ -14,6 +14,8 @@ namespace Car_Rental_System
     public partial class UserViewCar : UserControl
     {
         int vehicleId, userId;
+        string model, brand, imagePath, status;
+        decimal price;
         public UserViewCar(UserDashboard userDashboard, int userId)
         {
             InitializeComponent();
@@ -35,23 +37,19 @@ namespace Car_Rental_System
                 {
                     while (dr.Read())
                     {
-                        string model = dr["model"].ToString();
-                        string brand = dr["brand"].ToString();
-                        string imagePath = dr["car_url"].ToString();
-                        decimal price = Convert.ToDecimal(dr["rent_price"]);
-                        string status = dr["availability_status"].ToString();
+                        model = dr["model"].ToString();
+                        brand = dr["brand"].ToString();
+                        imagePath = dr["car_url"].ToString();
+                        price = Convert.ToDecimal(dr["rent_price"]);
+                        status = dr["availability_status"].ToString();
                         Console.WriteLine($"Adding Car: {model}, {brand}");
-
-                        vehicleId = db.GetVehicleIdFromDatabase(model, brand);
-
-                        UserCarCard carCard = new UserCarCard(model, brand, imagePath, price, status);
+                        UserCarCard carCard = new UserCarCard(userId, model, brand, imagePath, price, status);
 
                         UserDashboard dashboard = (UserDashboard)this.ParentForm;
                         flowLayoutPanel1.Controls.Add(carCard);
                     }
                 }
             }
-
         }
     }
 }

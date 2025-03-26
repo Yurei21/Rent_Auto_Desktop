@@ -48,7 +48,7 @@ CREATE TABLE Rentals (
     payment_status ENUM('Pending', 'Paid') DEFAULT 'Pending',
     status ENUM('Ongoing', 'Completed') DEFAULT 'Ongoing',
     carstatus ENUM('In-use', 'Returned') DEFAULT 'In-use',
-    barcode INT,
+    barcode INT UNIQUE,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (vehicle_id) REFERENCES Vehicles(vehicle_id) ON DELETE CASCADE
 );

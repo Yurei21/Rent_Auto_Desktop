@@ -96,7 +96,6 @@
             label4.Size = new Size(144, 16);
             label4.TabIndex = 19;
             label4.Text = "Starting Rent Date";
-            label4.Click += this.label4_Click;
             // 
             // dateTimePicker1
             // 
@@ -104,7 +103,6 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(337, 23);
             dateTimePicker1.TabIndex = 21;
-            dateTimePicker1.ValueChanged += this.dateTimePicker1_ValueChanged;
             // 
             // label5
             // 
@@ -123,6 +121,7 @@
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(337, 23);
             dateTimePicker2.TabIndex = 21;
+            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged_1;
             // 
             // label6
             // 
@@ -139,6 +138,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Cash", "Credit Card", "Online" });
             comboBox1.Location = new Point(389, 382);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(337, 23);

@@ -17,6 +17,13 @@ namespace Car_Rental_System
         {
             InitializeComponent();
             this.userId = userId;
+            Console.WriteLine($"Debug: User ID being used: {userId}");
+            UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
+            LoadUserControl(userViewCar);
+        }
+        public int GetLoggedInUserId()
+        {
+            return userId; 
         }
 
         public void LoadUserControl(UserControl control)
@@ -33,7 +40,7 @@ namespace Car_Rental_System
 
         private void button2_Click(object sender, EventArgs e)
         {
-            UserViewCar userViewCar = new UserViewCar(this, userId);
+            UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
             panel3.Controls.Clear();
             panel3.Controls.Add(userViewCar);
             userViewCar.Dock = DockStyle.Fill;

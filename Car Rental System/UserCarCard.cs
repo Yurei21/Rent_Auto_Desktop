@@ -27,6 +27,7 @@ namespace Car_Rental_System
             this.status = status;
             this.price = price;
             this.userId = userId;
+            MessageBox.Show($"UserCarCard Debug: userId = {this.userId}");
 
             label1.Text = brand;
             label2.Text = model;
@@ -46,9 +47,10 @@ namespace Car_Rental_System
                 : status == "Rented" ? Color.Red
                 : Color.Orange;
 
-            if (status == "Rented" || status == "On Maintenance")
+            if (status == "Rented" || status == "Under Maintenance")
             {
                 Register.Visible = false; 
+                this.Refresh();
             }
         }
 
@@ -77,7 +79,7 @@ namespace Car_Rental_System
         {
             vehicleId = GetVehicleIdFromDatabase(model, brand);
             UserDashboard dashboard = (UserDashboard)this.ParentForm;
-            UserRentCar userRent = new UserRentCar(dashboard, userId, vehicleId, model, brand, imagePath, price, status);
+            UserRentCar userRent = new UserRentCar(dashboard, vehicleId, userId, model, brand, imagePath, price, status);
             dashboard.LoadUserControl(userRent);
         }
     }
