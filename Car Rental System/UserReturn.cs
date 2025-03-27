@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
-    public partial class UserReturn: UserControl
+    public partial class UserReturn : UserControl
     {
         public UserReturn()
         {
@@ -20,11 +20,24 @@ namespace Car_Rental_System
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter) 
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 ProcessBarcode(textBox1.Text.Trim());
                 textBox1.Clear();
             }
+        }
+
+        private void SubmitBarcode()
+        {
+            string barcode = textBox1.Text;
+            if (string.IsNullOrEmpty(barcode))
+            {
+                MessageBox.Show("Please scan or enter a barcode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ProcessBarcode(barcode);
+            textBox1.Clear(); // Clear the textbox after processing
         }
 
         private void ProcessReturn(int rentalId, int vehicleId, DateTime dueDate)
@@ -39,7 +52,7 @@ namespace Car_Rental_System
             }
 
             string updateQuery = @"UPDATE rentals SET carstatus = 'Returned', status = 'Completed' WHERE rental_id = @rentalId;
-                UPDATE vehicles SET availability_status = 'Available' WHERE vehicle_id = @vehicleId;" ;
+                UPDATE vehicles SET availability_status = 'Available' WHERE vehicle_id = @vehicleId;";
 
             MySqlParameter[] parameters =
             {
@@ -48,13 +61,13 @@ namespace Car_Rental_System
             };
 
             DatabaseHelper db = new DatabaseHelper();
-            db.ExecuteQuery(updateQuery, parameters);  
+            db.ExecuteQuery(updateQuery, parameters);
 
             if (lateFee > 0)
             {
                 string lateQueryFee = @"INSERT INTO payments (rental_id, amount_paid, payment_method, pay_status)
                     VALUES (@rentalId, @lateFee, 'Cash', 'Paid');";
-                MySqlParameter[] lateFeeParams = 
+                MySqlParameter[] lateFeeParams =
                 {
                     new MySqlParameter("@rentalId", rentalId),
                     new MySqlParameter("@lateFee", lateFee)
@@ -67,14 +80,14 @@ namespace Car_Rental_System
 
         private void ProcessBarcode(string barcode)
         {
-            string query = "SELECT rental_id, vehicle_id, rental_end_date FROM rentals WHERE barcode = @barcode AND status = 'In-use'";
-            MySqlParameter[] param = { new MySqlParameter("query", barcode) };
+            string query = "SELECT rental_id, vehicle_id, rental_end_date FROM rentals WHERE barcode = @barcode AND status = 'Ongoing'";
+            MySqlParameter[] param = { new MySqlParameter("@barcode", barcode) };
             DatabaseHelper db = new DatabaseHelper();
             DataTable rentalData = db.ExecuteQueryWithDataTable(query, param);
             if (rentalData.Rows.Count > 0)
             {
                 int rentalId = Convert.ToInt32(rentalData.Rows[0]["rental_id"]);
-                int vehicleId = Convert.ToInt32(rentalData.Rows[0]["vehicleId"]);
+                int vehicleId = Convert.ToInt32(rentalData.Rows[0]["vehicle_id"]);
                 DateTime endDate = Convert.ToDateTime(rentalData.Rows[0]["rental_end_date"]);
 
                 ProcessReturn(rentalId, vehicleId, endDate);
@@ -85,5 +98,9 @@ namespace Car_Rental_System
             }
         }
 
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            SubmitBarcode();    
+        }
     }
 }

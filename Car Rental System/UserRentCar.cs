@@ -145,7 +145,7 @@ namespace Car_Rental_System
             if (rentalId != -1)
             {
                 MessageBox.Show("Transaction successful! Your rental is confirmed.");
-                UserReceipt userReceipt = new UserReceipt(rentalId, userId, brand, model, startDate, endDate, totalCost, paymentMethod, barcode);
+                UserReceipt userReceipt = new UserReceipt(vehicleId, rentalId, userId, brand, model, startDate, endDate, totalCost, paymentMethod, barcode);
                 userReceipt.Show();
                 this.Hide();
             }

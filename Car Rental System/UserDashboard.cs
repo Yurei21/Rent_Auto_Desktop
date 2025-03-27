@@ -23,7 +23,7 @@ namespace Car_Rental_System
         }
         public int GetLoggedInUserId()
         {
-            return userId; 
+            return userId;
         }
 
         public void LoadUserControl(UserControl control)
@@ -44,6 +44,14 @@ namespace Car_Rental_System
             panel3.Controls.Clear();
             panel3.Controls.Add(userViewCar);
             userViewCar.Dock = DockStyle.Fill;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserReturn userReturn = new UserReturn();
+            panel3.Controls.Clear();
+            panel3.Controls.Add(userReturn);    
+            userReturn.Dock = DockStyle.Fill;
         }
     }
 }

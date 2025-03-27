@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             textBox1 = new TextBox();
+            buttonPrint = new Button();
             SuspendLayout();
             // 
             // label1
@@ -45,17 +46,35 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(359, 460);
+            textBox1.Location = new Point(307, 451);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(248, 23);
             textBox1.TabIndex = 2;
-            textBox1.Visible = false;
+            // 
+            // buttonPrint
+            // 
+            buttonPrint.BackColor = Color.SlateBlue;
+            buttonPrint.Cursor = Cursors.Hand;
+            buttonPrint.FlatAppearance.BorderColor = Color.Red;
+            buttonPrint.FlatAppearance.BorderSize = 0;
+            buttonPrint.FlatStyle = FlatStyle.Flat;
+            buttonPrint.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonPrint.ForeColor = Color.White;
+            buttonPrint.Location = new Point(629, 451);
+            buttonPrint.Name = "buttonPrint";
+            buttonPrint.RightToLeft = RightToLeft.No;
+            buttonPrint.Size = new Size(240, 27);
+            buttonPrint.TabIndex = 25;
+            buttonPrint.Text = "Print";
+            buttonPrint.UseVisualStyleBackColor = false;
+            buttonPrint.Click += buttonPrint_Click;
             // 
             // UserReturn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(buttonPrint);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Name = "UserReturn";
@@ -68,5 +87,6 @@
 
         private Label label1;
         private TextBox textBox1;
+        private Button buttonPrint;
     }
 }

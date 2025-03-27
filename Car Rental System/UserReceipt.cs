@@ -18,11 +18,15 @@ namespace Car_Rental_System
 {
     public partial class UserReceipt : Form
     {
-        int userId;
-        public UserReceipt(int rentalId, int userId, string brand, string model, DateTime startDate, DateTime endDate, decimal totalCost, string paymentMethod, int barcode)
+        int userId, vehicleId;
+        string model, brand;
+        public UserReceipt(int vehicleId, int rentalId, int userId, string brand, string model, DateTime startDate, DateTime endDate, decimal totalCost, string paymentMethod, int barcode)
         {
             InitializeComponent();
             this.userId = userId;
+            this.brand = brand;
+            this.model = model;
+            this.vehicleId = vehicleId; 
 
             label1.Text = $"Rental ID: {rentalId}";
             label2.Text = $"User ID: {userId}";
@@ -74,7 +78,7 @@ namespace Car_Rental_System
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Printing receipt...");
-                UpdateVehicleStatus("Rented");
+                UpdateVehicleStatus();
                 UserDashboard ud = new UserDashboard(userId);
                 ud.Show();
                 this.Close();
@@ -83,14 +87,12 @@ namespace Car_Rental_System
             else return;
         }
 
-        private void UpdateVehicleStatus(string status)
+        private void UpdateVehicleStatus()
         {
-            string query = "UPDATE Vehicles SET availability_status = @status WHERE model = @model AND brand = @brand";
+            string query = "UPDATE Vehicles SET availability_status = 'Rented' WHERE vehicle_id = @vehicleId";
 
             MySqlParameter[] parameters = {
-                new MySqlParameter("@status", status),
-                new MySqlParameter("@model", label4.Text.Replace("Model: ", "").Trim()), 
-                new MySqlParameter("@brand", label3.Text.Replace("Brand: ", "").Trim()) 
+                new MySqlParameter("@vehicleId", vehicleId)
             };
 
             DatabaseHelper db = new DatabaseHelper();
