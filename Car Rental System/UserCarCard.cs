@@ -27,7 +27,6 @@ namespace Car_Rental_System
             this.status = status;
             this.price = price;
             this.userId = userId;
-            MessageBox.Show($"UserCarCard Debug: userId = {this.userId}");
 
             label1.Text = brand;
             label2.Text = model;

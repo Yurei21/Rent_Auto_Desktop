@@ -67,7 +67,6 @@ namespace Car_Rental_System
                             VALUES (@userId, @vehicleId, @startDate, @endDate, @totalCost, @barcode, 'Paid');
                         ";
 
-                        MessageBox.Show($"DEBUG: Attempting to INSERT rental for userId={userId}, vehicleId={vehicleId}");
 
                         MySqlParameter[] rentalParams = {
                             new MySqlParameter("@userId", userId),
@@ -85,8 +84,6 @@ namespace Car_Rental_System
                             object result = cmd.ExecuteScalar();
                             rentalId = (result != null && int.TryParse(result.ToString(), out int id)) ? id : -1;
                         }
-
-                        MessageBox.Show($"DEBUG: Last Inserted Rental ID = {rentalId}");
 
                         if (rentalId <= 0)
                         {
