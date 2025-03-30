@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 using System.Xml.Linq;
 using BCrypt.Net;
 using System.Collections;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Car_Rental_System
 {
@@ -23,6 +24,13 @@ namespace Car_Rental_System
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SignIn signIn = new SignIn();
+            signIn.Show();
+            this.Hide();
         }
 
         private void Register_Click(object sender, EventArgs e)
@@ -68,7 +76,7 @@ namespace Car_Rental_System
             if (userExists > 0)
             {
                 MessageBox.Show("Email is already registered. Try another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
@@ -96,7 +104,7 @@ namespace Car_Rental_System
                 }
             }
 
-            if (userId > 0) 
+            if (userId > 0)
             {
                 string queryAdmin = "INSERT INTO unhashedUsers (user_id, pass) VALUES (@user_id, @password)";
                 MySqlParameter[] ad =
@@ -141,10 +149,54 @@ namespace Car_Rental_System
         {
             return System.Text.RegularExpressions.Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
         }
-
-        private void label6_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            string email = textBox2.Text.Trim();
+            if (!IsValidEmail(email))
+            {
+                labelEmailError.Text = "Invalid email format!";
+                labelEmailError.Visible = true;
+            }
+            else
+            {
+                labelEmailError.Text = "";
+                labelEmailError.Visible = false;
+            }
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string phone = textBox3.Text.Trim();
+            if (!IsValidPhone(phone))
+            {
+                labelPhoneError.Text = "Invalid phone number! Use 10-15 digits.";
+                labelPhoneError.Visible = true;
+            }
+            else
+            {
+                labelPhoneError.Text = "";
+                labelPhoneError.Visible = false;
+            }
+        }
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            string password = textBox5.Text;
+            if (!IsStrongPassword(password))
+            {
+                labelPasswordError.Text = "Weak password: Use 8+ chars, A-Z, a-z, 0-9, and @!%*?";
+                labelPasswordError.ForeColor = Color.Red;
+                labelPasswordError.Visible = true;
+            }
+            else
+            {
+                labelPasswordError.Text = "Strong password!";
+                labelPasswordError.ForeColor = Color.Green;
+                labelPasswordError.Visible = true;
+            }
+        }
 
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox5.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
         }
     }
 }

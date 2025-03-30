@@ -127,8 +127,8 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Heavitas", 15F);
-            label6.ForeColor = Color.Crimson;
-            label6.Location = new Point(391, 287);
+            label6.ForeColor = Color.Plum;
+            label6.Location = new Point(478, 365);
             label6.Name = "label6";
             label6.Size = new Size(153, 26);
             label6.TabIndex = 17;
@@ -139,7 +139,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Cash", "Credit Card", "Online" });
-            comboBox1.Location = new Point(389, 382);
+            comboBox1.Location = new Point(387, 270);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(337, 23);
             comboBox1.TabIndex = 22;
@@ -149,7 +149,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Heavitas", 15F);
             label7.ForeColor = Color.LimeGreen;
-            label7.Location = new Point(391, 353);
+            label7.Location = new Point(389, 241);
             label7.Name = "label7";
             label7.Size = new Size(218, 26);
             label7.TabIndex = 17;

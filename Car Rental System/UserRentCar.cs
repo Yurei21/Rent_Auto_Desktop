@@ -30,7 +30,14 @@ namespace Car_Rental_System
 
             label2.Text = model;
             label3.Text = brand;
-            pictureBox1.ImageLocation = imagePath;
+            try 
+            {
+                pictureBox1.ImageLocation = imagePath;
+            }
+            catch
+            {
+                pictureBox1.Image = Properties.Resources.default_car;
+            }
 
             UpdateTotalCost();
             comboBox1.SelectedIndex = 0;
@@ -147,7 +154,7 @@ namespace Car_Rental_System
                 MessageBox.Show("Transaction successful! Your rental is confirmed.");
                 UserReceipt userReceipt = new UserReceipt(vehicleId, rentalId, userId, brand, model, startDate, endDate, totalCost, paymentMethod, barcode);
                 userReceipt.Show();
-                this.Hide();
+                ((UserDashboard)this.ParentForm).Close();
             }
             else
             {

@@ -40,7 +40,21 @@ namespace Car_Rental_System
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 dPath = ofd.FileName;
+                LoadDriverImage(dPath);
             }
+        }
+
+        private void LoadDriverImage(string dPath)
+        {
+            try
+            {
+                pictureBox2.Image = Image.FromFile(dPath);
+            }
+            catch
+            {
+                pictureBox2.Image = Properties.Resources.r__1_;
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,6 +68,18 @@ namespace Car_Rental_System
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 idCardPath = ofd.FileName;
+                LoadIdImage(idCardPath);
+            }
+        }
+        private void LoadIdImage(string idPath)
+        {
+            try
+            {
+                pictureBox3.Image = Image.FromFile(idPath);
+            }
+            catch
+            {
+                pictureBox3.Image = Properties.Resources.r__1_;
             }
         }
 
@@ -69,10 +95,10 @@ namespace Car_Rental_System
             {
                 conn.Open();
 
-                
+
                 SaveDocument(conn, "ID Card", idCardPath);
 
-                
+
                 SaveDocument(conn, "Driver License", dPath);
             }
 
@@ -93,6 +119,5 @@ namespace Car_Rental_System
 
             dbHelper.ExecuteQuery(query, parameters);
         }
-
     }
 }

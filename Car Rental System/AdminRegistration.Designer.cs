@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminRegistration));
             label5 = new Label();
             textBox3 = new TextBox();
             label2 = new Label();
@@ -40,6 +41,7 @@
             pictureBox1 = new PictureBox();
             Register = new Button();
             closeButton = new Button();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(284, 273);
+            label5.Location = new Point(296, 296);
             label5.Name = "label5";
             label5.Size = new Size(81, 16);
             label5.TabIndex = 10;
@@ -56,7 +58,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(285, 291);
+            textBox3.Location = new Point(297, 314);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(378, 23);
             textBox3.TabIndex = 9;
@@ -66,7 +68,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(285, 220);
+            label2.Location = new Point(297, 243);
             label2.Name = "label2";
             label2.Size = new Size(46, 16);
             label2.TabIndex = 7;
@@ -77,7 +79,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(286, 169);
+            label1.Location = new Point(298, 192);
             label1.Name = "label1";
             label1.Size = new Size(78, 16);
             label1.TabIndex = 8;
@@ -85,14 +87,14 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(286, 238);
+            textBox2.Location = new Point(298, 261);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(378, 23);
             textBox2.TabIndex = 5;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(287, 187);
+            textBox1.Location = new Point(299, 210);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(378, 23);
             textBox1.TabIndex = 6;
@@ -102,7 +104,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(284, 323);
+            label3.Location = new Point(296, 346);
             label3.Name = "label3";
             label3.Size = new Size(128, 16);
             label3.TabIndex = 12;
@@ -110,7 +112,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(285, 341);
+            textBox4.Location = new Point(297, 364);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(378, 23);
             textBox4.TabIndex = 11;
@@ -128,7 +130,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.r__1_;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(1, 1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(134, 134);
@@ -145,7 +147,7 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(390, 410);
+            Register.Location = new Point(402, 433);
             Register.Name = "Register";
             Register.Size = new Size(177, 46);
             Register.TabIndex = 16;
@@ -167,12 +169,26 @@
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.ActiveLinkColor = Color.White;
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.White;
+            linkLabel1.Location = new Point(470, 537);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(43, 15);
+            linkLabel1.TabIndex = 17;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Sign In";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // AdminRegistration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(951, 577);
+            Controls.Add(linkLabel1);
             Controls.Add(Register);
             Controls.Add(closeButton);
             Controls.Add(label6);
@@ -208,5 +224,6 @@
         private PictureBox pictureBox1;
         private Button Register;
         private Button closeButton;
+        private LinkLabel linkLabel1;
     }
 }

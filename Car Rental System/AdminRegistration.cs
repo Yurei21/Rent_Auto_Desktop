@@ -53,7 +53,7 @@ namespace Car_Rental_System
             if (emailExists > 0)
             {
                 MessageBox.Show("Email is already registered. Try another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
             string query = "INSERT INTO admins (username, email, password) VALUES (@username, @email, @password)";
@@ -100,5 +100,11 @@ namespace Car_Rental_System
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.Show();
+            this.Hide();
+        }
     }
 }

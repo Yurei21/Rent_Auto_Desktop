@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             panel1 = new Panel();
-            button1 = new Button();
+            button4 = new Button();
             button5 = new Button();
             button2 = new Button();
             panel2 = new Panel();
@@ -46,7 +46,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(24, 30, 54);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(button4);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(panel2);
@@ -57,22 +57,22 @@
             panel1.Size = new Size(166, 577);
             panel1.TabIndex = 12;
             // 
-            // button1
+            // button4
             // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 239);
-            button1.Name = "button1";
-            button1.Size = new Size(166, 54);
-            button1.TabIndex = 6;
-            button1.Text = "Return car";
-            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button4.Dock = DockStyle.Bottom;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.CornflowerBlue;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(0, 519);
+            button4.Name = "button4";
+            button4.Size = new Size(166, 58);
+            button4.TabIndex = 7;
+            button4.Text = "Log out";
+            button4.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -81,7 +81,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Image = Properties.Resources._4_0_2x;
             button5.Location = new Point(0, 185);
             button5.Name = "button5";
             button5.Size = new Size(166, 54);
@@ -132,7 +132,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(58, 12);
+            pictureBox1.Location = new Point(57, 34);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(45, 37);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -190,6 +190,6 @@
         private PictureBox pictureBox1;
         private Panel panel3;
         private Button closeButton;
-        private Button button1;
+        private Button button4;
     }
 }

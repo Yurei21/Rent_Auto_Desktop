@@ -54,20 +54,31 @@ namespace Car_Rental_System
             Brush brush = Brushes.Black;
             float yPos = 50;
 
-            e.Graphics.DrawString(label1.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label2.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label3.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label4.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label5.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label6.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label7.Text, font, brush, 50, yPos); yPos += 30;
-            e.Graphics.DrawString(label8.Text, font, brush, 50, yPos); yPos += 30;
+            int pageWidth = e.MarginBounds.Width;
+
+            string[] labels = { label1.Text, label2.Text, label3.Text, label4.Text,
+                        label5.Text, label6.Text, label7.Text, label8.Text };
+
+            foreach (string text in labels)
+            {
+                if (!string.IsNullOrEmpty(text))
+                {
+                    SizeF textSize = e.Graphics.MeasureString(text, font);
+                    float xPos = e.MarginBounds.Left + (pageWidth - textSize.Width) / 2; 
+                    e.Graphics.DrawString(text, font, brush, xPos, yPos);
+                    yPos += 30;
+                }
+            }
 
             if (pictureBox1.Image != null)
             {
-                e.Graphics.DrawImage(pictureBox1.Image, new Rectangle(50, (int)yPos, 200, 50));
+                int imageWidth = 200;
+                int imageHeight = 50;
+                int xPos = e.MarginBounds.Left + (pageWidth - imageWidth) / 2; 
+                e.Graphics.DrawImage(pictureBox1.Image, new Rectangle(xPos, (int)yPos, imageWidth, imageHeight));
             }
         }
+
 
         private void buttonPrint_Click_1(object sender, EventArgs e)
         {

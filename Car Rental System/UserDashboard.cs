@@ -46,12 +46,11 @@ namespace Car_Rental_System
             userViewCar.Dock = DockStyle.Fill;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            UserReturn userReturn = new UserReturn();
-            panel3.Controls.Clear();
-            panel3.Controls.Add(userReturn);    
-            userReturn.Dock = DockStyle.Fill;
+            Landing landing = new Landing();
+            landing.Show();
+            this.Hide();    
         }
     }
 }

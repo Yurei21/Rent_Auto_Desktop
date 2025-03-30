@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             label1 = new Label();
@@ -42,12 +43,17 @@
             label6 = new Label();
             closeButton = new Button();
             Register = new Button();
+            checkBoxShowPassword = new CheckBox();
+            labelEmailError = new Label();
+            labelPhoneError = new Label();
+            labelPasswordError = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.r__1_;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(-1, -8);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(134, 134);
@@ -79,6 +85,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(378, 23);
             textBox2.TabIndex = 1;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -97,6 +104,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(378, 23);
             textBox3.TabIndex = 1;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label3
             // 
@@ -144,6 +152,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(378, 23);
             textBox5.TabIndex = 3;
+            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
             // 
@@ -179,13 +188,75 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(645, 261);
+            Register.Location = new Point(150, 454);
             Register.Name = "Register";
-            Register.Size = new Size(177, 46);
+            Register.Size = new Size(379, 33);
             Register.TabIndex = 6;
             Register.Text = "Register";
             Register.UseVisualStyleBackColor = false;
             Register.Click += Register_Click;
+            // 
+            // checkBoxShowPassword
+            // 
+            checkBoxShowPassword.AutoSize = true;
+            checkBoxShowPassword.ForeColor = Color.White;
+            checkBoxShowPassword.Location = new Point(536, 407);
+            checkBoxShowPassword.Name = "checkBoxShowPassword";
+            checkBoxShowPassword.Size = new Size(108, 19);
+            checkBoxShowPassword.TabIndex = 8;
+            checkBoxShowPassword.Text = "Show password";
+            checkBoxShowPassword.UseVisualStyleBackColor = true;
+            checkBoxShowPassword.CheckedChanged += checkBoxShowPassword_CheckedChanged;
+            // 
+            // labelEmailError
+            // 
+            labelEmailError.AutoSize = true;
+            labelEmailError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelEmailError.ForeColor = Color.Red;
+            labelEmailError.Location = new Point(221, 285);
+            labelEmailError.Name = "labelEmailError";
+            labelEmailError.Size = new Size(0, 16);
+            labelEmailError.TabIndex = 9;
+            labelEmailError.Visible = false;
+            // 
+            // labelPhoneError
+            // 
+            labelPhoneError.AutoSize = true;
+            labelPhoneError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPhoneError.ForeColor = Color.Red;
+            labelPhoneError.Location = new Point(221, 335);
+            labelPhoneError.Name = "labelPhoneError";
+            labelPhoneError.Size = new Size(0, 16);
+            labelPhoneError.TabIndex = 10;
+            labelPhoneError.Visible = false;
+            // 
+            // labelPasswordError
+            // 
+            labelPasswordError.AutoSize = true;
+            labelPasswordError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPasswordError.ForeColor = Color.Red;
+            labelPasswordError.Location = new Point(221, 435);
+            labelPasswordError.Name = "labelPasswordError";
+            labelPasswordError.Size = new Size(0, 16);
+            labelPasswordError.TabIndex = 11;
+            labelPasswordError.Visible = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.SlateBlue;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.Red;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(605, 296);
+            button1.Name = "button1";
+            button1.Size = new Size(301, 36);
+            button1.TabIndex = 6;
+            button1.Text = "have an account?";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // Registration
             // 
@@ -193,6 +264,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(951, 577);
+            Controls.Add(checkBoxShowPassword);
+            Controls.Add(button1);
             Controls.Add(Register);
             Controls.Add(closeButton);
             Controls.Add(label5);
@@ -207,6 +280,9 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
+            Controls.Add(labelEmailError);
+            Controls.Add(labelPhoneError);
+            Controls.Add(labelPasswordError);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Registration";
             StartPosition = FormStartPosition.CenterScreen;
@@ -237,5 +313,10 @@
         private Label label6;
         private Button closeButton;
         private Button Register;
+        private CheckBox checkBoxShowPassword;
+        private Label labelEmailError;
+        private Label labelPhoneError;
+        private Label labelPasswordError;
+        private Button button1;
     }
 }
