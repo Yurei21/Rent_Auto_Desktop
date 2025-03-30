@@ -48,7 +48,6 @@ namespace Car_Rental_System
             DateTime startDate = dateTimePicker1.Value;
             DateTime endDate = dateTimePicker2.Value;
 
-            // Ensure at least 1 full day is counted
             int daysDifference = (endDate - startDate).Days + 1;
             if (daysDifference <= 0) daysDifference = 1;
 

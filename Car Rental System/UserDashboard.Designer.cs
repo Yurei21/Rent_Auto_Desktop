@@ -38,6 +38,7 @@
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
             closeButton = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,6 +47,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(24, 30, 54);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button2);
@@ -160,6 +162,23 @@
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += closeButton_Click;
             // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(0, 239);
+            button1.Name = "button1";
+            button1.Size = new Size(166, 54);
+            button1.TabIndex = 8;
+            button1.Text = "Profile";
+            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // UserDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -191,5 +210,6 @@
         private Panel panel3;
         private Button closeButton;
         private Button button4;
+        private Button button1;
     }
 }

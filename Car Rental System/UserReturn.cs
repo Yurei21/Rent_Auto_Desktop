@@ -37,7 +37,7 @@ namespace Car_Rental_System
             }
 
             ProcessBarcode(barcode);
-            textBox1.Clear(); // Clear the textbox after processing
+            textBox1.Clear(); 
         }
 
         private void ProcessReturn(int rentalId, int vehicleId, DateTime dueDate)

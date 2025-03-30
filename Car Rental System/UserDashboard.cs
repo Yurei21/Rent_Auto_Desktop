@@ -48,7 +48,12 @@ namespace Car_Rental_System
         {
             Landing landing = new Landing();
             landing.Show();
-            this.Hide();    
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
