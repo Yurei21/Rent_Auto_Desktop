@@ -24,6 +24,7 @@ namespace Car_Rental_System
             this.vehicleId = vehicleId;
             this.userId = userId;
             this.brand = brand;
+            this.model = model;
             this.imagePath = imagePath;
             this.price = price;
             this.status = status;

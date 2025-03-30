@@ -26,7 +26,7 @@ namespace Car_Rental_System
             this.userId = userId;
             this.brand = brand;
             this.model = model;
-            this.vehicleId = vehicleId; 
+            this.vehicleId = vehicleId;
 
             label1.Text = $"Rental ID: {rentalId}";
             label2.Text = $"User ID: {userId}";
@@ -37,7 +37,6 @@ namespace Car_Rental_System
             label7.Text = $"Total Cost: ₱{totalCost:F2}";
             label8.Text = $"Payment: {paymentMethod}";
 
-            // Generate barcode
             pictureBox1.Image = GenerateBarcode(barcode.ToString());
         }
         public static Bitmap GenerateBarcode(string barcodeText)
@@ -54,31 +53,30 @@ namespace Car_Rental_System
             Brush brush = Brushes.Black;
             float yPos = 50;
 
-            int pageWidth = e.MarginBounds.Width;
+            label1.Refresh();
+            label2.Refresh();
+            label3.Refresh();
+            label4.Refresh();
+            label5.Refresh();
+            label6.Refresh();
+            label7.Refresh();
+            label8.Refresh();
+            MessageBox.Show($"Debug - Rental ID: {label1.Text}\nUser ID: {label2.Text}\nBrand: {label3.Text}\nModel: {label4.Text}");
 
-            string[] labels = { label1.Text, label2.Text, label3.Text, label4.Text,
-                        label5.Text, label6.Text, label7.Text, label8.Text };
-
-            foreach (string text in labels)
-            {
-                if (!string.IsNullOrEmpty(text))
-                {
-                    SizeF textSize = e.Graphics.MeasureString(text, font);
-                    float xPos = e.MarginBounds.Left + (pageWidth - textSize.Width) / 2; 
-                    e.Graphics.DrawString(text, font, brush, xPos, yPos);
-                    yPos += 30;
-                }
-            }
+            e.Graphics.DrawString(label1.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label2.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label3.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label4.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label5.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label6.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label7.Text, font, brush, 50, yPos); yPos += 30;
+            e.Graphics.DrawString(label8.Text, font, brush, 50, yPos); yPos += 30;
 
             if (pictureBox1.Image != null)
             {
-                int imageWidth = 200;
-                int imageHeight = 50;
-                int xPos = e.MarginBounds.Left + (pageWidth - imageWidth) / 2; 
-                e.Graphics.DrawImage(pictureBox1.Image, new Rectangle(xPos, (int)yPos, imageWidth, imageHeight));
+                e.Graphics.DrawImage(pictureBox1.Image, new Rectangle(50, (int)yPos, 200, 50));
             }
         }
-
 
         private void buttonPrint_Click_1(object sender, EventArgs e)
         {
@@ -89,11 +87,11 @@ namespace Car_Rental_System
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Printing receipt...");
+                printDocument.Print();
                 UpdateVehicleStatus();
                 UserDashboard ud = new UserDashboard(userId);
                 ud.Show();
                 this.Close();
-                printDocument.Print();
             }
             else return;
         }
