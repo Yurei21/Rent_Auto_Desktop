@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Car_Rental_System
 {
     public partial class UserDashboard : Form
@@ -17,7 +16,6 @@ namespace Car_Rental_System
         {
             InitializeComponent();
             this.userId = userId;
-            Console.WriteLine($"Debug: User ID being used: {userId}");
             UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
             LoadUserControl(userViewCar);
         }

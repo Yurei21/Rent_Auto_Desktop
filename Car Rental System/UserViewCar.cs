@@ -42,7 +42,6 @@ namespace Car_Rental_System
                         imagePath = dr["car_url"].ToString();
                         price = Convert.ToDecimal(dr["rent_price"]);
                         status = dr["availability_status"].ToString();
-                        Console.WriteLine($"Adding Car: {model}, {brand}");
                         UserCarCard carCard = new UserCarCard(userId, model, brand, imagePath, price, status);
 
                         UserDashboard dashboard = (UserDashboard)this.ParentForm;
