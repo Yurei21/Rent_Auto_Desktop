@@ -61,11 +61,11 @@
             buttonPrint.FlatStyle = FlatStyle.Flat;
             buttonPrint.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonPrint.ForeColor = Color.White;
-            buttonPrint.Location = new Point(58, 274);
+            buttonPrint.Location = new Point(49, 274);
             buttonPrint.Margin = new Padding(3, 4, 3, 4);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.RightToLeft = RightToLeft.No;
-            buttonPrint.Size = new Size(274, 36);
+            buttonPrint.Size = new Size(283, 36);
             buttonPrint.TabIndex = 25;
             buttonPrint.Text = "Print";
             buttonPrint.UseVisualStyleBackColor = false;

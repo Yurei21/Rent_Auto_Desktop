@@ -16,8 +16,9 @@ namespace Car_Rental_System
         public SignIn()
         {
             InitializeComponent();
+            linkLabel1.Visible = false;
         }
-
+        private int clicked = 0;
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Admin adminForm = new Admin();
@@ -53,7 +54,7 @@ namespace Car_Rental_System
 
             MySqlParameter[] param = new MySqlParameter[] { new MySqlParameter("@email", email) };
             object result = db.ExecuteScalar(query, param);
-   
+
             string id = "SELECT user_id FROM users WHERE email = @email";
             int userId = db.ExecuteScalarQuery(id, param);
 
@@ -79,5 +80,10 @@ namespace Car_Rental_System
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            clicked++;
+            if (clicked == 15) linkLabel1.Visible = true;
+        }
     }
 }

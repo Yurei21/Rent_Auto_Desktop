@@ -13,7 +13,6 @@ public class DatabaseHelper
         return new MySqlConnection(connectionString);
     }
 
-
     public object ExecuteScalar(string query, MySqlParameter[] parameters = null)
     {
         try
@@ -110,6 +109,37 @@ public class DatabaseHelper
                 }
             }
         }
+        return result;
+    }
+
+    public string GetName(MySqlConnection conn, int userId)
+    {
+        string result = "Not Found";
+        string query = "SELECT name FROM users WHERE user_id = @userId LIMIT 1";
+
+        using (MySqlCommand cmd = new MySqlCommand(query, conn))
+        {
+            cmd.Parameters.AddWithValue("@userId", userId);
+
+            try
+            {
+                conn.Open();
+                object queryResult = cmd.ExecuteScalar();
+                if (queryResult != null)
+                {
+                    result = queryResult.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         return result;
     }
 

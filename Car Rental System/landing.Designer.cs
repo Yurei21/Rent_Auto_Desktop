@@ -44,9 +44,10 @@
             signinButton.FlatStyle = FlatStyle.Flat;
             signinButton.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             signinButton.ForeColor = Color.White;
-            signinButton.Location = new Point(289, 348);
+            signinButton.Location = new Point(330, 464);
+            signinButton.Margin = new Padding(3, 4, 3, 4);
             signinButton.Name = "signinButton";
-            signinButton.Size = new Size(177, 46);
+            signinButton.Size = new Size(202, 61);
             signinButton.TabIndex = 0;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
@@ -61,9 +62,10 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(488, 348);
+            Register.Location = new Point(558, 464);
+            Register.Margin = new Padding(3, 4, 3, 4);
             Register.Name = "Register";
-            Register.Size = new Size(177, 46);
+            Register.Size = new Size(202, 61);
             Register.TabIndex = 1;
             Register.Text = "Register";
             Register.UseVisualStyleBackColor = false;
@@ -72,9 +74,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(289, 148);
+            pictureBox1.Location = new Point(330, 197);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(376, 173);
+            pictureBox1.Size = new Size(430, 231);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -84,9 +87,10 @@
             closeButton.FlatAppearance.BorderSize = 0;
             closeButton.FlatStyle = FlatStyle.Flat;
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(920, 12);
+            closeButton.Location = new Point(1051, 16);
+            closeButton.Margin = new Padding(3, 4, 3, 4);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
+            closeButton.Size = new Size(29, 33);
             closeButton.TabIndex = 3;
             closeButton.Text = "X";
             closeButton.UseVisualStyleBackColor = true;
@@ -94,15 +98,16 @@
             // 
             // Landing
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
-            ClientSize = new Size(957, 577);
+            ClientSize = new Size(1094, 769);
             Controls.Add(closeButton);
             Controls.Add(pictureBox1);
             Controls.Add(Register);
             Controls.Add(signinButton);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Landing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent_an_auto";
