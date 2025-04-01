@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Esf;
 
 namespace Car_Rental_System
 {
@@ -37,13 +38,20 @@ namespace Car_Rental_System
             }
 
             ProcessBarcode(barcode);
-            textBox1.Clear(); 
+            textBox1.Clear();
         }
 
         private void ProcessReturn(int rentalId, int vehicleId, DateTime dueDate)
         {
             DateTime returnDate = DateTime.Now;
             decimal lateFee = 0;
+            decimal damageFee = 0;
+
+            if (!decimal.TryParse(textBox2.Text.Trim(), out damageFee))
+            {
+                MessageBox.Show("Invalid damage fee amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (returnDate > dueDate)
             {
@@ -51,7 +59,8 @@ namespace Car_Rental_System
                 lateFee = daysLate * 500;
             }
 
-            string updateQuery = @"UPDATE rentals SET carstatus = 'Returned', status = 'Completed' WHERE rental_id = @rentalId;
+            string updateQuery = @"
+                UPDATE rentals SET carstatus = 'Returned', status = 'Completed' WHERE rental_id = @rentalId;
                 UPDATE vehicles SET availability_status = 'Available' WHERE vehicle_id = @vehicleId;";
 
             MySqlParameter[] parameters =
@@ -63,19 +72,23 @@ namespace Car_Rental_System
             DatabaseHelper db = new DatabaseHelper();
             db.ExecuteQuery(updateQuery, parameters);
 
-            if (lateFee > 0)
+            string paymentQuery = @"
+                INSERT INTO payments (rental_id, amount_paid, payment_method, pay_status, additionalOrLate_fee)
+                VALUES (@rentalId, @totalFee, 'Cash', 'Paid', @lateFee);";
+
+            decimal totalFee = damageFee + lateFee;
+
+            MySqlParameter[] paymentParams =
             {
-                string lateQueryFee = @"INSERT INTO payments (rental_id, amount_paid, payment_method, pay_status)
-                    VALUES (@rentalId, @lateFee, 'Cash', 'Paid');";
-                MySqlParameter[] lateFeeParams =
-                {
-                    new MySqlParameter("@rentalId", rentalId),
-                    new MySqlParameter("@lateFee", lateFee)
-                };
-                db.ExecuteQuery(lateQueryFee, lateFeeParams);
-                MessageBox.Show($"Late Fee of ₱{lateFee:F2} added!", "Late Fee", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            MessageBox.Show("Car returned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new MySqlParameter("@rentalId", rentalId),
+                new MySqlParameter("@totalFee", totalFee),
+                new MySqlParameter("@lateFee", lateFee)
+            };
+
+            db.ExecuteQuery(paymentQuery, paymentParams);
+
+            MessageBox.Show($"Car returned successfully!\nTotal Fees: ₱{totalFee:F2}\nLate Fee: ₱{lateFee:F2}\nDamage Fee: ₱{damageFee:F2}",
+                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ProcessBarcode(string barcode)
@@ -100,7 +113,19 @@ namespace Car_Rental_System
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            SubmitBarcode();    
+            SubmitBarcode();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string curr = textBox1.Text;
+            if (curr.Contains("#"))
+            {
+                textBox1.Text = curr.Replace("#", "");
+                textBox1.SelectionStart = textBox1.Text.Length;
+            }
+
+        }
+
     }
 }

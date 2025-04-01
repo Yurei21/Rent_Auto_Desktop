@@ -4,6 +4,7 @@ CREATE TABLE Users (
     email VARCHAR(100) UNIQUE NOT NULL,
     phone VARCHAR(15) UNIQUE NOT NULL,
     address TEXT,
+    status ENUM('Pending', 'Accepted', 'Rejected') DEFAULT 'Pending',
     password VARCHAR(255) NOT NULL
 );
 
@@ -61,7 +62,7 @@ CREATE TABLE Payments (
     payment_method ENUM('Cash', 'Credit Card', 'Online') NOT NULL,
     payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     pay_status ENUM('Paid', 'Pending') DEFAULT 'Pending',
-    late_fee DECIMAL(10,2) DEFAULT 0.00,
+    additionalOrLate_fee DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (rental_id) REFERENCES Rentals(rental_id) ON DELETE CASCADE
 );
 

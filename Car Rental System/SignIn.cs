@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Car_Rental_System
 {
@@ -53,7 +54,7 @@ namespace Car_Rental_System
 
             MySqlParameter[] param = new MySqlParameter[] { new MySqlParameter("@email", email) };
             object result = db.ExecuteScalar(query, param);
-   
+
             string id = "SELECT user_id FROM users WHERE email = @email";
             int userId = db.ExecuteScalarQuery(id, param);
 
@@ -79,5 +80,9 @@ namespace Car_Rental_System
 
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = true;
+        }
     }
 }

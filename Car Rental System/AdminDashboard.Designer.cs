@@ -180,7 +180,7 @@
             button1.Name = "button1";
             button1.Size = new Size(166, 42);
             button1.TabIndex = 1;
-            button1.Text = "Home";
+            button1.Text = "Verify User";
             button1.TextImageRelation = TextImageRelation.TextBeforeImage;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;

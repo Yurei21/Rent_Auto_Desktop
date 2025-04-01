@@ -102,9 +102,9 @@ namespace Car_Rental_System
                 SaveDocument(conn, "Driver License", dPath);
             }
 
-            MessageBox.Show("Documents uploaded successfully!");
-            UserDashboard userDash = new UserDashboard(userId);
-            userDash.Show();
+            MessageBox.Show("Documents uploaded successfully! Wait for the Admin to verify the documents");
+            SignIn signIn = new SignIn();
+            signIn.Show();
             this.Hide();
         }
 

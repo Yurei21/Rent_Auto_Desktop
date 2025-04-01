@@ -48,6 +48,8 @@
             labelPhoneError = new Label();
             labelPasswordError = new Label();
             button1 = new Button();
+            textBox6 = new TextBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -152,6 +154,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(378, 23);
             textBox5.TabIndex = 3;
+            textBox5.UseSystemPasswordChar = true;
             textBox5.TextChanged += textBox5_TextChanged;
             // 
             // label6
@@ -188,7 +191,7 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(150, 454);
+            Register.Location = new Point(150, 496);
             Register.Name = "Register";
             Register.Size = new Size(379, 33);
             Register.TabIndex = 6;
@@ -235,7 +238,7 @@
             labelPasswordError.AutoSize = true;
             labelPasswordError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelPasswordError.ForeColor = Color.Red;
-            labelPasswordError.Location = new Point(221, 435);
+            labelPasswordError.Location = new Point(300, 435);
             labelPasswordError.Name = "labelPasswordError";
             labelPasswordError.Size = new Size(0, 16);
             labelPasswordError.TabIndex = 11;
@@ -258,16 +261,37 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(151, 454);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(378, 23);
+            textBox6.TabIndex = 12;
+            textBox6.UseSystemPasswordChar = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(151, 435);
+            label7.Name = "label7";
+            label7.Size = new Size(145, 16);
+            label7.TabIndex = 4;
+            label7.Text = "Confirm Password";
+            // 
             // Registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(951, 577);
+            Controls.Add(textBox6);
             Controls.Add(checkBoxShowPassword);
             Controls.Add(button1);
             Controls.Add(Register);
             Controls.Add(closeButton);
+            Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(textBox5);
             Controls.Add(label4);
@@ -318,5 +342,7 @@
         private Label labelPhoneError;
         private Label labelPasswordError;
         private Button button1;
+        private TextBox textBox6;
+        private Label label7;
     }
 }

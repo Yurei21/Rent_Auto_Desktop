@@ -40,14 +40,20 @@ namespace Car_Rental_System
             string phone = textBox3.Text.Trim();
             string address = textBox4.Text.Trim();
             string password = textBox5.Text;
+            string confirmedPassword = textBox6.Text;   
             DatabaseHelper db = new DatabaseHelper();
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) ||
-                string.IsNullOrWhiteSpace(password))
+                string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmedPassword))
             {
                 MessageBox.Show("All fields are required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            if (password != confirmedPassword) 
+            {
+                MessageBox.Show("Password doesn't match the confirmed password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (!IsValidEmail(email))
@@ -144,11 +150,25 @@ namespace Car_Rental_System
             return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10,15}$");
         }
 
-
         private bool IsStrongPassword(string password)
         {
-            return System.Text.RegularExpressions.Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+            return System.Text.RegularExpressions.Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?#_()&]{8,}$");
         }
+
+        private string GetPasswordStrength(string password)
+        {
+            int score = 0;
+
+            if (password.Length >= 8) score++;  
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[a-z]")) score++; 
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[A-Z]")) score++; 
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"\d")) score++; 
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[@$!%*?&]")) score++; 
+            if (score <= 2) return "Weak";
+            if (score == 3 || score == 4) return "Medium";
+            return "Strong";
+        }
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             string email = textBox2.Text.Trim();
@@ -180,19 +200,27 @@ namespace Car_Rental_System
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             string password = textBox5.Text;
-            if (!IsStrongPassword(password))
+            string strength = GetPasswordStrength(password);
+
+            if (strength == "Weak")
             {
-                labelPasswordError.Text = "Weak password: Use 8+ chars, A-Z, a-z, 0-9, and @!%*?";
+                labelPasswordError.Text = "Weak password: Use at least 8 chars, A-Z, a-z, 0-9, @!%*?";
                 labelPasswordError.ForeColor = Color.Red;
-                labelPasswordError.Visible = true;
+            }
+            else if (strength == "Medium")
+            {
+                labelPasswordError.Text = "Medium password: Consider adding more variety!";
+                labelPasswordError.ForeColor = Color.Orange;
             }
             else
             {
                 labelPasswordError.Text = "Strong password!";
                 labelPasswordError.ForeColor = Color.Green;
-                labelPasswordError.Visible = true;
             }
+
+            labelPasswordError.Visible = true;
         }
+
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
