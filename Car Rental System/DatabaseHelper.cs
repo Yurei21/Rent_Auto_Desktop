@@ -13,7 +13,6 @@ public class DatabaseHelper
         return new MySqlConnection(connectionString);
     }
 
-
     public object ExecuteScalar(string query, MySqlParameter[] parameters = null)
     {
         try
@@ -52,6 +51,22 @@ public class DatabaseHelper
             return null;
         }
     }
+    public MySqlDataReader ExecuteReader(string query, MySqlParameter[] parameters = null)
+    {
+        MySqlConnection conn = GetConnection();
+        MySqlCommand cmd = new MySqlCommand(query, conn);
+
+        if (parameters != null)
+        {
+            cmd.Parameters.AddRange(parameters);
+        }
+
+        conn.Open();
+        MySqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+        return reader;
+    }
+
 
 
     public bool ExecuteQuery(string query, MySqlParameter[] parameters = null)

@@ -16,18 +16,8 @@ namespace Car_Rental_System
         public AdminUserVerification()
         {
             InitializeComponent();
+            LoadPendingUsers();
         }
-        private bool HasTwoValidIDs(int userId)
-        {
-            string query = "SELECT COUNT(*) FROM Documents WHERE user_id = @userId";
-            MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
-
-            DatabaseHelper db = new DatabaseHelper();
-            int docCount = Convert.ToInt32(db.ExecuteScalar(query, param));
-
-            return docCount >= 2;
-        }
-
         private void LoadPendingUsers()
         {
             string query = "SELECT user_id, name, status FROM Users WHERE status = 'Pending'";
@@ -42,6 +32,16 @@ namespace Car_Rental_System
 
                 CreateUserCard(userId, userName, status);
             }
+        }
+        private bool HasTwoValidIDs(int userId)
+        {
+            string query = "SELECT COUNT(*) FROM Documents WHERE user_id = @userId";
+            MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
+
+            DatabaseHelper db = new DatabaseHelper();
+            int docCount = Convert.ToInt32(db.ExecuteScalar(query, param));
+
+            return docCount >= 2;
         }
 
         private DataTable GetUserDocuments(int userId)
@@ -76,8 +76,8 @@ namespace Car_Rental_System
         {
             Panel userPanel = new Panel
             {
-                Size = new Size(400, 150),
-                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(750, 180),
+                BorderStyle = BorderStyle.FixedSingle
             };
 
             Label nameLabel = new Label
@@ -98,11 +98,39 @@ namespace Car_Rental_System
 
             DataTable documents = GetUserDocuments(userId);
 
-            PictureBox pic1 = new PictureBox { Size = new Size(100, 100), Location = new Point(10, 50), BorderStyle = BorderStyle.Fixed3D };
-            PictureBox pic2 = new PictureBox { Size = new Size(100, 100), Location = new Point(120, 50), BorderStyle = BorderStyle.Fixed3D };
+            PictureBox pic1 = new PictureBox { Size = new Size(100, 100), Location = new Point(10, 50), SizeMode = PictureBoxSizeMode.StretchImage};
+            PictureBox pic2 = new PictureBox { Size = new Size(100, 100), Location = new Point(120, 50), SizeMode = PictureBoxSizeMode.StretchImage };
 
-            if (documents.Rows.Count > 0) pic1.ImageLocation = documents.Rows[0]["document_url"].ToString();
-            if (documents.Rows.Count > 1) pic2.ImageLocation = documents.Rows[1]["document_url"].ToString();
+            if (documents.Rows.Count > 0)
+            {
+                string docUrl1 = documents.Rows[0]["document_url"].ToString();  
+                if (File.Exists(docUrl1))
+                {
+                    pic1.ImageLocation = docUrl1;
+                    pic1.Load();
+                }
+                else
+                {
+                    pic1.Image = Properties.Resources.r;
+                    MessageBox.Show($"File not found: {docUrl1}");
+                }
+            }
+
+            if (documents.Rows.Count > 1)
+            {
+                string docUrl2 = documents.Rows[1]["document_url"].ToString();
+                if (File.Exists(docUrl2))
+                {
+                    pic2.ImageLocation = docUrl2;
+                    pic2.Load();
+                }
+                else
+                {
+                    pic2.Image = Properties.Resources.r;
+                    MessageBox.Show($"File not found: {docUrl2}");
+                }
+            }
+
 
             Button approveButton = new Button
             {

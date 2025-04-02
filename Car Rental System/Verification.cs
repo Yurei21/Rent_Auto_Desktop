@@ -110,14 +110,34 @@ namespace Car_Rental_System
 
         private void SaveDocument(MySqlConnection conn, string docType, string filePath)
         {
-            string query = "INSERT INTO Documents (user_id, document_type, document_url) VALUES (@user_id, @document_type, @document_url)";
-            MySqlParameter[] parameters = {
-                new MySqlParameter("@user_id", userId),
-                new MySqlParameter("@document_type", docType),
-                new MySqlParameter("@document_url", Path.GetFileName(filePath))
-            };
+            string saveDirectory = @"C:\Users\Public\CarRentalDocs\";
 
-            dbHelper.ExecuteQuery(query, parameters);
+            if (!Directory.Exists(saveDirectory))
+            {
+                Directory.CreateDirectory(saveDirectory);
+            }
+
+            string fileName = Path.GetFileName(filePath);
+            string destinationPath = Path.Combine(saveDirectory, fileName);
+
+            try
+            {
+                File.Copy(filePath, destinationPath, true); 
+
+                string query = "INSERT INTO Documents (user_id, document_type, document_url) VALUES (@user_id, @document_type, @document_url)";
+                MySqlParameter[] parameters = {
+                    new MySqlParameter("@user_id", userId),
+                    new MySqlParameter("@document_type", docType),
+                    new MySqlParameter("@document_url", destinationPath) 
+                };
+
+                dbHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving document: {ex.Message}", "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }

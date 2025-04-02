@@ -15,6 +15,7 @@ namespace Car_Rental_System
         public AdminDashboard()
         {
             InitializeComponent();
+            LoadUserControl(new AdminUserVerification());
         }
 
         public void LoadUserControl(UserControl control)

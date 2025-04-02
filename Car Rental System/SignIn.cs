@@ -37,7 +37,6 @@ namespace Car_Rental_System
             registrationForm.Show();
             this.Hide();
         }
-
         private void signinButton_Click(object sender, EventArgs e)
         {
             String email = textBox1.Text.Trim();
@@ -45,39 +44,54 @@ namespace Car_Rental_System
 
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Please input");
+                MessageBox.Show("Please input your email and password.");
                 return;
             }
 
             DatabaseHelper db = new DatabaseHelper();
-            string query = "SELECT password FROM users WHERE email = @email";
+            string query = "SELECT password, status, user_id FROM users WHERE email = @email";
 
             MySqlParameter[] param = new MySqlParameter[] { new MySqlParameter("@email", email) };
-            object result = db.ExecuteScalar(query, param);
 
-            string id = "SELECT user_id FROM users WHERE email = @email";
-            int userId = db.ExecuteScalarQuery(id, param);
-
-
-            if (result != null && result is string hashedPassword)
+            using (MySqlDataReader reader = db.ExecuteReader(query, param))
             {
-                if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                if (reader.Read())
                 {
-                    MessageBox.Show("Logged in Successfully");
-                    UserDashboard ud = new UserDashboard(userId);
-                    ud.Show();
-                    this.Hide();
+                    string hashedPassword = reader["password"].ToString();
+                    string status = reader["status"].ToString();
+                    int userId = Convert.ToInt32(reader["user_id"]);
+
+                    if (status == "Pending")
+                    {
+                        MessageBox.Show("Your account is still pending approval. Please wait for an admin to verify your documents.",
+                                        "Account Pending", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    if (status == "Rejected")
+                    {
+                        MessageBox.Show("Your account has been rejected. Please contact support for further assistance.",
+                                        "Account Rejected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                    {
+                        MessageBox.Show("Logged in Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UserDashboard ud = new UserDashboard(userId);
+                        ud.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Password");
+                    MessageBox.Show("Username not found or password retrieval failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show("Username Not Found or Password Retrieval Failed");
-            }
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
