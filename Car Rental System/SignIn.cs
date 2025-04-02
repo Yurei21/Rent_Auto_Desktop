@@ -99,5 +99,11 @@ namespace Car_Rental_System
         {
             textBox2.UseSystemPasswordChar = true;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            clicked++;
+            if (clicked == 5) linkLabel1.Visible = true;
+        }
     }
 }
