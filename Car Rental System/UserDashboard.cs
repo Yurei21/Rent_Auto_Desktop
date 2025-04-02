@@ -12,9 +12,11 @@ namespace Car_Rental_System
     public partial class UserDashboard : Form
     {
         int userId;
+        string name;
         public UserDashboard(int userId)
         {
             InitializeComponent();
+            DatabaseHelper db = new DatabaseHelper();
             this.userId = userId;
             UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
             LoadUserControl(userViewCar);
@@ -54,6 +56,14 @@ namespace Car_Rental_System
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UserRecords userRecords = new UserRecords(userId);
+            panel3.Controls.Clear();
+            panel3.Controls.Add(userRecords);
+            userRecords.Dock = DockStyle.Fill;
         }
     }
 }

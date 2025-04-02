@@ -17,8 +17,9 @@ namespace Car_Rental_System
         public SignIn()
         {
             InitializeComponent();
+            linkLabel1.Visible = false;
         }
-
+        private int clicked = 0;
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Admin adminForm = new Admin();
