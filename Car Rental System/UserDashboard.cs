@@ -48,14 +48,22 @@ namespace Car_Rental_System
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Landing landing = new Landing();
-            landing.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("Are you sure you want to proceed?", "Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Logging out", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Landing landing = new Landing();
+                landing.Show();
+                this.Hide();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            UserProfile userProfile = new UserProfile(userId);
+            LoadUserControl(userProfile);
         }
 
         private void button5_Click(object sender, EventArgs e)

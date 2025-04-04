@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,13 +72,21 @@ namespace Car_Rental_System
                 MessageBox.Show("User must upload at least two valid IDs before approval.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        private void SetupFlowLayoutPanel()
+        {
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.WrapContents = true;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
+        
         private void CreateUserCard(int userId, string userName, string status)
         {
+            int panelWidth = (flowLayoutPanel1.Width / 2) - 10; 
             Panel userPanel = new Panel
             {
-                Size = new Size(750, 180),
-                BorderStyle = BorderStyle.FixedSingle
+                Size = new Size(panelWidth, 185),
+                Padding = new Padding(10)
             };
 
             Label nameLabel = new Label
@@ -85,7 +94,8 @@ namespace Car_Rental_System
                 Text = "Name: " + userName,
                 AutoSize = true,
                 Location = new Point(10, 10),
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                Font = new Font("Heavitas", 9, FontStyle.Regular)
             };
 
             Label statusLabel = new Label
@@ -93,7 +103,8 @@ namespace Car_Rental_System
                 Text = "Status: " + status,
                 AutoSize = true,
                 Location = new Point(10, 30),
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                Font = new Font("Heavitas", 9, FontStyle.Regular)
             };
 
             DataTable documents = GetUserDocuments(userId);

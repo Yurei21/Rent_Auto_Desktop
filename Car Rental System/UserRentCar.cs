@@ -144,6 +144,23 @@ namespace Car_Rental_System
                 return;
             }
 
+            DialogResult result = MessageBox.Show(
+                $"Confirm transaction?\n\n" +
+                $"Vehicle: {brand} {model}\n" +
+                $"Start Date: {startDate.ToShortDateString()}\n" +
+                $"End Date: {endDate.ToShortDateString()}\n" +
+                $"Total Cost: ₱{totalCost:F2}\n" +
+                $"Payment Method: {paymentMethod}",
+                "Confirm Rental",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             (int rentalId, int barcode) = RentAndPay(userId, vehicleId, startDate, endDate, totalCost, paymentMethod);
 
             if (rentalId != -1)
@@ -158,6 +175,7 @@ namespace Car_Rental_System
                 MessageBox.Show("Transaction failed. Please try again.");
             }
         }
+
 
         private void dateTimePicker2_ValueChanged_1(object sender, EventArgs e)
         {

@@ -39,6 +39,7 @@
             label9 = new Label();
             pictureBox1 = new PictureBox();
             buttonPrint = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -161,11 +162,29 @@
             buttonPrint.Location = new Point(334, 472);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.RightToLeft = RightToLeft.No;
-            buttonPrint.Size = new Size(240, 27);
+            buttonPrint.Size = new Size(230, 27);
             buttonPrint.TabIndex = 24;
             buttonPrint.Text = "Print";
             buttonPrint.UseVisualStyleBackColor = false;
             buttonPrint.Click += buttonPrint_Click_1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.SlateBlue;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.Red;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(580, 394);
+            button1.Name = "button1";
+            button1.RightToLeft = RightToLeft.No;
+            button1.Size = new Size(136, 37);
+            button1.TabIndex = 25;
+            button1.Text = "Download";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // UserReceipt
             // 
@@ -173,6 +192,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(941, 538);
+            Controls.Add(button1);
             Controls.Add(buttonPrint);
             Controls.Add(pictureBox1);
             Controls.Add(label9);
@@ -206,5 +226,6 @@
         private Label label9;
         private PictureBox pictureBox1;
         private Button buttonPrint;
+        private Button button1;
     }
 }

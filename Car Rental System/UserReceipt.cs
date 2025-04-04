@@ -13,6 +13,7 @@ using NetBarcode;
 using System.Drawing.Printing;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace Car_Rental_System
 {
@@ -114,6 +115,35 @@ namespace Car_Rental_System
             else
             {
                 MessageBox.Show("Error updating vehicle status.");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF File|*.pdf";
+            saveFileDialog.Title = "Save Receipt as PDF";
+            saveFileDialog.FileName = "RentalReceipt.pdf";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                PrintDocument printDocument = new PrintDocument();
+                printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                printDocument.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                printDocument.PrinterSettings.PrintToFile = true;
+                printDocument.PrinterSettings.PrintFileName = saveFileDialog.FileName;
+
+                try
+                {
+                    printDocument.Print();
+                    MessageBox.Show("Receipt saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving receipt: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
