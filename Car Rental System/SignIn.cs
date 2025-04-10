@@ -71,21 +71,25 @@ namespace Car_Rental_System
 
                     if (status == "Rejected")
                     {
-                        MessageBox.Show("Your account has been rejected. Please contact support for further assistance.",
+                        MessageBox.Show("Your account has been rejected. Please upload a valid image",
                                         "Account Rejected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
-                    {
-                        MessageBox.Show("Logged in Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        UserDashboard ud = new UserDashboard(userId);
-                        ud.Show();
+                        Verification verification = new Verification(userId);
+                        verification.Show();
                         this.Hide();
                     }
-                    else
-                    {
-                        MessageBox.Show("Invalid Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                    if (status == "Accepted") { 
+                        if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                        {
+                            MessageBox.Show("Logged in Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            UserDashboard ud = new UserDashboard(userId);
+                            ud.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else

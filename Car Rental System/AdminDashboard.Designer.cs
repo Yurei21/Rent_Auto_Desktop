@@ -177,10 +177,9 @@
             button1.Dock = DockStyle.Top;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Heavitas", 12F);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.TopCenter;
             button1.Location = new Point(0, 175);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";

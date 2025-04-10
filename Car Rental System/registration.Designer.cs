@@ -227,7 +227,7 @@
             labelPhoneError.AutoSize = true;
             labelPhoneError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelPhoneError.ForeColor = Color.Red;
-            labelPhoneError.Location = new Point(221, 335);
+            labelPhoneError.Location = new Point(241, 335);
             labelPhoneError.Name = "labelPhoneError";
             labelPhoneError.Size = new Size(0, 16);
             labelPhoneError.TabIndex = 10;
@@ -238,7 +238,7 @@
             labelPasswordError.AutoSize = true;
             labelPasswordError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelPasswordError.ForeColor = Color.Red;
-            labelPasswordError.Location = new Point(300, 435);
+            labelPasswordError.Location = new Point(350, 435);
             labelPasswordError.Name = "labelPasswordError";
             labelPasswordError.Size = new Size(0, 16);
             labelPasswordError.TabIndex = 11;

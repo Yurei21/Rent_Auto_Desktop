@@ -72,6 +72,21 @@ namespace Car_Rental_System
                 MessageBox.Show("User must upload at least two valid IDs before approval.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void RejectUser(int userId)
+        {
+                string updateQuery = "UPDATE Users SET status = 'Rejected' WHERE user_id = @userId";
+                MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
+
+                DatabaseHelper db = new DatabaseHelper();
+                db.ExecuteQuery(updateQuery, param);
+
+                MessageBox.Show("User has been successfully Rejected!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                flowLayoutPanel1.Controls.Clear();
+                LoadPendingUsers();
+        }
+
         private void SetupFlowLayoutPanel()
         {
             flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
@@ -111,14 +126,16 @@ namespace Car_Rental_System
 
             PictureBox pic1 = new PictureBox { Size = new Size(100, 100), Location = new Point(10, 50), SizeMode = PictureBoxSizeMode.StretchImage};
             PictureBox pic2 = new PictureBox { Size = new Size(100, 100), Location = new Point(120, 50), SizeMode = PictureBoxSizeMode.StretchImage };
-
+            
             if (documents.Rows.Count > 0)
             {
-                string docUrl1 = documents.Rows[0]["document_url"].ToString();  
+                string docUrl1 = documents.Rows[0]["document_url"].ToString();
                 if (File.Exists(docUrl1))
                 {
                     pic1.ImageLocation = docUrl1;
                     pic1.Load();
+                    pic1.Cursor = Cursors.Hand;
+                    pic1.Click += (sender, e) => System.Diagnostics.Process.Start("explorer.exe", docUrl1);
                 }
                 else
                 {
@@ -134,6 +151,8 @@ namespace Car_Rental_System
                 {
                     pic2.ImageLocation = docUrl2;
                     pic2.Load();
+                    pic2.Cursor = Cursors.Hand;
+                    pic2.Click += (sender, e) => System.Diagnostics.Process.Start("explorer.exe", docUrl2);
                 }
                 else
                 {
@@ -151,13 +170,25 @@ namespace Car_Rental_System
                 BackColor = Color.Green,
                 ForeColor = Color.White
             };
+
+            Button rejectButton = new Button
+            {
+                Text = "Reject",
+                Location = new Point(240, 100),
+                Size = new Size(100, 30),
+                BackColor = Color.Red,
+                ForeColor = Color.White
+            };
+
             approveButton.Click += (sender, e) => ApproveUser(userId);
+            rejectButton.Click += (sender, e) => RejectUser(userId);
 
             userPanel.Controls.Add(nameLabel);
             userPanel.Controls.Add(statusLabel);
             userPanel.Controls.Add(pic1);
             userPanel.Controls.Add(pic2);
             userPanel.Controls.Add(approveButton);
+            userPanel.Controls.Add(rejectButton);
 
             flowLayoutPanel1.Controls.Add(userPanel);
         }

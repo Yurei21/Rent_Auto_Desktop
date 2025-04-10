@@ -53,7 +53,7 @@ namespace Car_Rental_System
             if (daysDifference <= 0) daysDifference = 1;
 
             decimal newPrice = price * daysDifference;
-            label6.Text = $"₱{newPrice:F2}";
+            label6.Text = $"Total Cost: ₱{newPrice:F2}";
         }
 
         public (int rentalId, int barcode) RentAndPay(int userId, int vehicleId, DateTime startDate, DateTime endDate, decimal totalCost, string paymentMethod)

@@ -95,7 +95,19 @@ namespace Car_Rental_System
             {
                 conn.Open();
 
+                string statusQuery = "SELECT status FROM Users WHERE user_id = @userId";
+                MySqlCommand statusCmd = new MySqlCommand(statusQuery, conn);
+                statusCmd.Parameters.AddWithValue("@userId", userId);
 
+                string currentStatus = statusCmd.ExecuteScalar()?.ToString();
+
+                if (currentStatus == "Rejected")
+                {
+                    string updateStatusQuery = "UPDATE Users SET status = 'Pending' WHERE user_id = @userId";
+                    MySqlCommand updateCmd = new MySqlCommand(updateStatusQuery, conn);
+                    updateCmd.Parameters.AddWithValue("@userId", userId);
+                    updateCmd.ExecuteNonQuery();
+                }
                 SaveDocument(conn, "ID Card", idCardPath);
 
 
@@ -122,22 +134,47 @@ namespace Car_Rental_System
 
             try
             {
-                File.Copy(filePath, destinationPath, true); 
+                string checkQuery = "SELECT COUNT(*) FROM Documents WHERE user_id = @user_id AND document_type = @document_type";
+                MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
+                checkCmd.Parameters.AddWithValue("@user_id", userId);
+                checkCmd.Parameters.AddWithValue("@document_type", docType);
+                int count = Convert.ToInt32(checkCmd.ExecuteScalar());
 
-                string query = "INSERT INTO Documents (user_id, document_type, document_url) VALUES (@user_id, @document_type, @document_url)";
-                MySqlParameter[] parameters = {
-                    new MySqlParameter("@user_id", userId),
-                    new MySqlParameter("@document_type", docType),
-                    new MySqlParameter("@document_url", destinationPath) 
-                };
+                if (count > 0)
+                {
+                    DialogResult result = MessageBox.Show($"{docType} already exists. Do you want to overwrite it?",
+                                                          "Duplicate Document",
+                                                          MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                        return;
 
-                dbHelper.ExecuteQuery(query, parameters);
+                    string updateQuery = "UPDATE Documents SET document_url = @document_url WHERE user_id = @user_id AND document_type = @document_type";
+                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
+                    updateCmd.Parameters.AddWithValue("@user_id", userId);
+                    updateCmd.Parameters.AddWithValue("@document_type", docType);
+                    updateCmd.Parameters.AddWithValue("@document_url", destinationPath);
+                    File.Copy(filePath, destinationPath, true);
+                    updateCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    File.Copy(filePath, destinationPath, true);
+
+                    string insertQuery = "INSERT INTO Documents (user_id, document_type, document_url) VALUES (@user_id, @document_type, @document_url)";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn);
+                    insertCmd.Parameters.AddWithValue("@user_id", userId);
+                    insertCmd.Parameters.AddWithValue("@document_type", docType);
+                    insertCmd.Parameters.AddWithValue("@document_url", destinationPath);
+                    insertCmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving document: {ex.Message}", "Upload Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }
