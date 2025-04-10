@@ -39,9 +39,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 35F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(17, 24);
+            label1.Location = new Point(15, 18);
             label1.Name = "label1";
-            label1.Size = new Size(609, 76);
+            label1.Size = new Size(482, 61);
             label1.TabIndex = 23;
             label1.Text = "Rental Records";
             // 
@@ -59,23 +59,23 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = Color.SlateBlue;
-            dataGridView1.Location = new Point(28, 128);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(24, 96);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(859, 561);
+            dataGridView1.Size = new Size(752, 421);
             dataGridView1.TabIndex = 22;
             // 
             // UserRecords
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "UserRecords";
-            Size = new Size(904, 712);
+            Size = new Size(791, 534);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

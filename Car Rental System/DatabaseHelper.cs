@@ -51,6 +51,25 @@ public class DatabaseHelper
             return null;
         }
     }
+
+    public DataTable FetchData(string query, MySqlParameter[] parameters)
+    {
+        MySqlConnection conn = GetConnection();
+        using (conn)
+        {
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddRange(parameters);
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+    }
+
     public MySqlDataReader ExecuteReader(string query, MySqlParameter[] parameters = null)
     {
         MySqlConnection conn = GetConnection();
