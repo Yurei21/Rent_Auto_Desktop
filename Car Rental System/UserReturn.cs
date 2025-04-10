@@ -23,7 +23,6 @@ namespace Car_Rental_System
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                ProcessBarcode(textBox1.Text.Trim());
                 textBox1.Clear();
             }
         }
