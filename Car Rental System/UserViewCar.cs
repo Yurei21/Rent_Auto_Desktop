@@ -26,6 +26,12 @@ namespace Car_Rental_System
         public void loadCars()
         {
             flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.WrapContents = true;
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Padding = new Padding(10); 
+            flowLayoutPanel1.Margin = new Padding(10);
+
 
             DatabaseHelper db = new DatabaseHelper();
             string query = "SELECT * FROM vehicles";

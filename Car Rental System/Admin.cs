@@ -42,14 +42,14 @@ namespace Car_Rental_System
             string adminUsername = textBox1.Text;
             string adminPassword = textBox2.Text;
 
-             if (String.IsNullOrWhiteSpace(adminUsername) || String.IsNullOrWhiteSpace(adminPassword))
-             {
-                 MessageBox.Show("Please Input a username or password.");
-                 return;
-             }
+            if (String.IsNullOrWhiteSpace(adminUsername) || String.IsNullOrWhiteSpace(adminPassword))
+            {
+                MessageBox.Show("Please Input a username or password.");
+                return;
+            }
 
-             DatabaseHelper db = new DatabaseHelper();
-             String query = "SELECT password FROM admins WHERE username = @username";
+            DatabaseHelper db = new DatabaseHelper();
+            String query = "SELECT password FROM admins WHERE username = @username";
 
             MySqlParameter[] param = { new MySqlParameter("@username", adminUsername) };
             object result = db.ExecuteScalar(query, param);
@@ -76,9 +76,19 @@ namespace Car_Rental_System
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AdminRegistration registration = new AdminRegistration();  
+            AdminRegistration registration = new AdminRegistration();
             registration.Show();
             this.Hide();
+        }
+
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = true;
         }
     }
 }

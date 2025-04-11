@@ -59,7 +59,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 18F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(16, 169);
+            label2.Location = new Point(43, 171);
             label2.Name = "label2";
             label2.Size = new Size(115, 39);
             label2.TabIndex = 19;
@@ -81,11 +81,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Heavitas", 12F);
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.ForeColor = Color.White;
             label4.Location = new Point(48, 288);
             label4.Name = "label4";
-            label4.Size = new Size(80, 26);
+            label4.Size = new Size(64, 28);
             label4.TabIndex = 21;
             label4.Text = "Email";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -93,11 +93,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Heavitas", 12F);
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label5.ForeColor = Color.White;
             label5.Location = new Point(48, 343);
             label5.Name = "label5";
-            label5.Size = new Size(190, 26);
+            label5.Size = new Size(154, 28);
             label5.TabIndex = 22;
             label5.Text = "Phone Number";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -105,11 +105,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Heavitas", 12F);
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label6.ForeColor = Color.White;
             label6.Location = new Point(48, 401);
             label6.Name = "label6";
-            label6.Size = new Size(187, 26);
+            label6.Size = new Size(149, 28);
             label6.TabIndex = 23;
             label6.Text = "Home Address";
             label6.TextAlign = ContentAlignment.MiddleCenter;

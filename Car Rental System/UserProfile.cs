@@ -35,9 +35,9 @@ namespace Car_Rental_System
                     if (reader.Read())
                     {
                         label2.Text = reader["name"].ToString();
-                        label4.Text = reader["email"].ToString();
-                        label5.Text = reader["phone"].ToString();
-                        label6.Text = reader["address"].ToString();
+                        label4.Text = "Email: " + reader["email"].ToString();
+                        label5.Text = "Phone: " + reader["phone"].ToString();
+                        label6.Text = "Address: " + reader["address"].ToString();
                     }
                 }
 

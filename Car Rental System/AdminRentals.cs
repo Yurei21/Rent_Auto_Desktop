@@ -78,7 +78,7 @@ namespace Car_Rental_System
                 dataGridView1.Columns["carstatus"].HeaderText = "Car Status";
                 dataGridView1.Columns["barcode"].HeaderText = "Barcode";
 
-                dataGridView1.Columns["total_cost"].DefaultCellStyle.Format = "C2";
+                dataGridView1.Columns["total_cost"].DefaultCellStyle.Format = "'₱'#,##0.00";
                 dataGridView1.Columns["rental_start_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
                 dataGridView1.Columns["rental_end_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
             }

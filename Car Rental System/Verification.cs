@@ -110,7 +110,6 @@ namespace Car_Rental_System
                 }
                 SaveDocument(conn, "ID Card", idCardPath);
 
-
                 SaveDocument(conn, "Driver License", dPath);
             }
 
@@ -129,7 +128,7 @@ namespace Car_Rental_System
                 Directory.CreateDirectory(saveDirectory);
             }
 
-            string fileName = Path.GetFileName(filePath);
+            string fileName = $"{docType.Replace(" ", "_")}_{userId}_{Path.GetFileName(filePath)}";
             string destinationPath = Path.Combine(saveDirectory, fileName);
 
             try

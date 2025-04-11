@@ -39,6 +39,7 @@
             linkLabel2 = new LinkLabel();
             linkLabel1 = new LinkLabel();
             linkLabel3 = new LinkLabel();
+            checkBoxShowPassword = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -50,9 +51,10 @@
             signinButton.FlatStyle = FlatStyle.Flat;
             signinButton.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             signinButton.ForeColor = Color.White;
-            signinButton.Location = new Point(397, 454);
+            signinButton.Location = new Point(454, 605);
+            signinButton.Margin = new Padding(3, 4, 3, 4);
             signinButton.Name = "signinButton";
-            signinButton.Size = new Size(177, 46);
+            signinButton.Size = new Size(202, 61);
             signinButton.TabIndex = 13;
             signinButton.Text = "Sign In";
             signinButton.UseVisualStyleBackColor = false;
@@ -63,43 +65,47 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(276, 377);
+            label1.Location = new Point(315, 503);
             label1.Name = "label1";
-            label1.Size = new Size(128, 16);
+            label1.Size = new Size(168, 20);
             label1.TabIndex = 12;
             label1.Text = "Admin Password";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(277, 395);
+            textBox2.Location = new Point(317, 527);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(402, 23);
+            textBox2.Size = new Size(459, 27);
             textBox2.TabIndex = 11;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(277, 320);
+            label2.Location = new Point(317, 427);
             label2.Name = "label2";
-            label2.Size = new Size(125, 16);
+            label2.Size = new Size(162, 20);
             label2.TabIndex = 10;
             label2.Text = "Admin Username";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(278, 338);
+            textBox1.Location = new Point(318, 451);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(402, 23);
+            textBox1.Size = new Size(459, 27);
             textBox1.TabIndex = 9;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(278, 76);
+            pictureBox1.Location = new Point(318, 101);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(402, 210);
+            pictureBox1.Size = new Size(459, 280);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
@@ -109,9 +115,10 @@
             closeButton.FlatAppearance.BorderSize = 0;
             closeButton.FlatStyle = FlatStyle.Flat;
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(920, 12);
+            closeButton.Location = new Point(1051, 16);
+            closeButton.Margin = new Padding(3, 4, 3, 4);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
+            closeButton.Size = new Size(29, 33);
             closeButton.TabIndex = 14;
             closeButton.Text = "X";
             closeButton.UseVisualStyleBackColor = true;
@@ -122,9 +129,9 @@
             linkLabel2.ActiveLinkColor = Color.White;
             linkLabel2.AutoSize = true;
             linkLabel2.LinkColor = Color.White;
-            linkLabel2.Location = new Point(278, 527);
+            linkLabel2.Location = new Point(318, 703);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(49, 15);
+            linkLabel2.Size = new Size(63, 20);
             linkLabel2.TabIndex = 15;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Register";
@@ -135,9 +142,9 @@
             linkLabel1.ActiveLinkColor = Color.White;
             linkLabel1.AutoSize = true;
             linkLabel1.LinkColor = Color.White;
-            linkLabel1.Location = new Point(637, 527);
+            linkLabel1.Location = new Point(728, 703);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(43, 15);
+            linkLabel1.Size = new Size(54, 20);
             linkLabel1.TabIndex = 15;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Sign In";
@@ -148,20 +155,34 @@
             linkLabel3.ActiveLinkColor = Color.White;
             linkLabel3.AutoSize = true;
             linkLabel3.LinkColor = Color.White;
-            linkLabel3.Location = new Point(444, 553);
+            linkLabel3.Location = new Point(507, 737);
             linkLabel3.Name = "linkLabel3";
-            linkLabel3.Size = new Size(88, 15);
+            linkLabel3.Size = new Size(111, 20);
             linkLabel3.TabIndex = 16;
             linkLabel3.TabStop = true;
             linkLabel3.Text = "Admin Register";
             linkLabel3.LinkClicked += linkLabel3_LinkClicked;
             // 
+            // checkBoxShowPassword
+            // 
+            checkBoxShowPassword.AutoSize = true;
+            checkBoxShowPassword.ForeColor = Color.White;
+            checkBoxShowPassword.Location = new Point(782, 527);
+            checkBoxShowPassword.Margin = new Padding(3, 4, 3, 4);
+            checkBoxShowPassword.Name = "checkBoxShowPassword";
+            checkBoxShowPassword.Size = new Size(134, 24);
+            checkBoxShowPassword.TabIndex = 17;
+            checkBoxShowPassword.Text = "Show password";
+            checkBoxShowPassword.UseVisualStyleBackColor = true;
+            checkBoxShowPassword.CheckedChanged += checkBoxShowPassword_CheckedChanged;
+            // 
             // Admin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
-            ClientSize = new Size(957, 577);
+            ClientSize = new Size(1094, 769);
+            Controls.Add(checkBoxShowPassword);
             Controls.Add(linkLabel3);
             Controls.Add(linkLabel1);
             Controls.Add(linkLabel2);
@@ -173,6 +194,7 @@
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Login";
@@ -193,5 +215,6 @@
         private LinkLabel linkLabel2;
         private LinkLabel linkLabel1;
         private LinkLabel linkLabel3;
+        private CheckBox checkBoxShowPassword;
     }
 }

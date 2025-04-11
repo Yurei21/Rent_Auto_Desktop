@@ -205,7 +205,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(26, 99);
+            label1.Location = new Point(15, 98);
             label1.Name = "label1";
             label1.Size = new Size(160, 20);
             label1.TabIndex = 2;

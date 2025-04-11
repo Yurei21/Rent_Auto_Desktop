@@ -109,5 +109,10 @@ namespace Car_Rental_System
             clicked++;
             if (clicked == 5) linkLabel1.Visible = true;
         }
+
+        private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace Car_Rental_System
             }
 
             LoadMaintenanceRecords(vehicleId);
+            CustomizeDataGridView();
         }
 
         private void Modify_Click(object sender, EventArgs e)
@@ -163,7 +164,7 @@ namespace Car_Rental_System
 
         private void LoadMaintenanceRecords(int vehicleId)
         {
-            string query = "SELECT maintenance_id, maintenance_date, details, cost FROM Maintenance WHERE vehicle_id = @vehicleId";
+            string query = "SELECT maintenance_date, details, cost FROM Maintenance WHERE vehicle_id = @vehicleId";
 
             MySqlParameter[] parameters = {
                 new MySqlParameter("@vehicleId", vehicleId)
@@ -193,6 +194,21 @@ namespace Car_Rental_System
             }
         }
 
+        private void CustomizeDataGridView()
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns["details"].HeaderText = "Details";
+                dataGridView1.Columns["cost"].HeaderText = "Cost";
+                dataGridView1.Columns["maintenance_date"].HeaderText = "Maintenance Date";
+
+                dataGridView1.Columns["maintenance_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            }
+        }
 
     }
 }

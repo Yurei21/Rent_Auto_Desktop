@@ -25,7 +25,7 @@ namespace Car_Rental_System
 
         private void Register_Click(object sender, EventArgs e)
         {
-            string code = "seeyuh";
+            string code = "admins@";
             string codeInput = textBox4.Text;
             string username = textBox1.Text;
             string email = textBox2.Text;
@@ -106,5 +106,6 @@ namespace Car_Rental_System
             admin.Show();
             this.Hide();
         }
+
     }
 }

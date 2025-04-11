@@ -20,6 +20,19 @@ namespace Car_Rental_System
             InitializeComponent();
         }
 
+        private void LoadCarImage(string dPath)
+        {
+            try
+            {
+                pictureBox1.Image = Image.FromFile(dPath);
+            }
+            catch
+            {
+                pictureBox1.Image = Properties.Resources.default_car;
+            }
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog()
@@ -31,6 +44,7 @@ namespace Car_Rental_System
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 carPath = ofd.FileName;
+                LoadCarImage(carPath);
             }
         }
 

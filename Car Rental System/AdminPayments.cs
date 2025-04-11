@@ -62,6 +62,8 @@ namespace Car_Rental_System
                 dataGridView1.Columns["pay_status"].HeaderText = "Status";
                 dataGridView1.Columns["additionalOrLate_fee"].HeaderText = "Additional Fee";
 
+                dataGridView1.Columns["amount_paid"].DefaultCellStyle.Format = "'₱'#,##0.00";
+                dataGridView1.Columns["additionalOrLate_fee"].DefaultCellStyle.Format = "'₱'#,##0.00";
                 dataGridView1.Columns["payment_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
             }
         }

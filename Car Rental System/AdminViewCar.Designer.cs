@@ -47,10 +47,10 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(1, 120);
+            flowLayoutPanel1.Location = new Point(61, 107);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(888, 599);
+            flowLayoutPanel1.Size = new Size(822, 610);
             flowLayoutPanel1.TabIndex = 16;
             // 
             // AdminViewCar

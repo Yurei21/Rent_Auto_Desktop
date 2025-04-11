@@ -41,6 +41,8 @@
             label5 = new Label();
             comboBox1 = new ComboBox();
             Register = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label6
@@ -50,7 +52,7 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(400, 77);
+            label6.Size = new Size(502, 97);
             label6.TabIndex = 13;
             label6.Text = "Add a car";
             // 
@@ -63,9 +65,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(288, 112);
+            button1.Location = new Point(600, 517);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(181, 71);
+            button1.Size = new Size(207, 95);
             button1.TabIndex = 14;
             button1.Text = "Upload a picture of a car";
             button1.UseVisualStyleBackColor = false;
@@ -76,9 +79,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(186, 344);
+            label4.Location = new Point(28, 354);
             label4.Name = "label4";
-            label4.Size = new Size(44, 16);
+            label4.Size = new Size(58, 20);
             label4.TabIndex = 18;
             label4.Text = "Price";
             // 
@@ -87,9 +90,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(186, 296);
+            label3.Location = new Point(28, 290);
             label3.Name = "label3";
-            label3.Size = new Size(41, 16);
+            label3.Size = new Size(53, 20);
             label3.TabIndex = 19;
             label3.Text = "Year";
             // 
@@ -98,9 +101,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(185, 246);
+            label2.Location = new Point(26, 223);
             label2.Name = "label2";
-            label2.Size = new Size(51, 16);
+            label2.Size = new Size(66, 20);
             label2.TabIndex = 20;
             label2.Text = "Brand";
             // 
@@ -109,38 +112,42 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(186, 195);
+            label1.Location = new Point(28, 155);
             label1.Name = "label1";
-            label1.Size = new Size(52, 16);
+            label1.Size = new Size(68, 20);
             label1.TabIndex = 21;
             label1.Text = "Model";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(187, 362);
+            textBox4.Location = new Point(29, 378);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(378, 23);
+            textBox4.Size = new Size(431, 27);
             textBox4.TabIndex = 22;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(187, 314);
+            textBox3.Location = new Point(29, 314);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(378, 23);
+            textBox3.Size = new Size(431, 27);
             textBox3.TabIndex = 15;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(186, 264);
+            textBox2.Location = new Point(28, 247);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(378, 23);
+            textBox2.Size = new Size(431, 27);
             textBox2.TabIndex = 16;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(187, 213);
+            textBox1.Location = new Point(29, 179);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(378, 23);
+            textBox1.Size = new Size(431, 27);
             textBox1.TabIndex = 17;
             // 
             // label5
@@ -148,9 +155,9 @@
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(187, 391);
+            label5.Location = new Point(29, 416);
             label5.Name = "label5";
-            label5.Size = new Size(55, 16);
+            label5.Size = new Size(72, 20);
             label5.TabIndex = 18;
             label5.Text = "Status";
             // 
@@ -160,9 +167,10 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Available", "Rented", "Under Maintenance" });
-            comboBox1.Location = new Point(188, 410);
+            comboBox1.Location = new Point(30, 442);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(377, 23);
+            comboBox1.Size = new Size(430, 28);
             comboBox1.TabIndex = 23;
             // 
             // Register
@@ -174,19 +182,30 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(288, 459);
+            Register.Location = new Point(144, 507);
+            Register.Margin = new Padding(3, 4, 3, 4);
             Register.Name = "Register";
-            Register.Size = new Size(181, 46);
+            Register.Size = new Size(207, 61);
             Register.TabIndex = 24;
             Register.Text = "Submit";
             Register.UseVisualStyleBackColor = false;
             Register.Click += Register_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(489, 150);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(384, 330);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
+            // 
             // AddCars
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(pictureBox1);
             Controls.Add(Register);
             Controls.Add(comboBox1);
             Controls.Add(label5);
@@ -200,8 +219,10 @@
             Controls.Add(textBox1);
             Controls.Add(button1);
             Controls.Add(label6);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AddCars";
-            Size = new Size(775, 538);
+            Size = new Size(886, 717);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +241,6 @@
         private Label label5;
         private ComboBox comboBox1;
         private Button Register;
+        private PictureBox pictureBox1;
     }
 }
