@@ -32,10 +32,14 @@ namespace Car_Rental_System
             signIn.Show();
             this.Hide();
         }
+        private bool IsNameValid(string name)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$");
+        }
 
         private void Register_Click(object sender, EventArgs e)
         {
-            string name = textBox1.Text.Trim();
+            string name = textBox1.Text;
             string email = textBox2.Text.Trim();
             string phone = textBox3.Text.Trim();
             string address = textBox4.Text.Trim();
@@ -50,6 +54,7 @@ namespace Car_Rental_System
                 MessageBox.Show("All fields are required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
 
             if (password != confirmedPassword) 
             {

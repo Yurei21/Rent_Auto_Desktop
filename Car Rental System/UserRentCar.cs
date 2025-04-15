@@ -31,7 +31,7 @@ namespace Car_Rental_System
 
             label2.Text = model;
             label3.Text = brand;
-            try 
+            try
             {
                 pictureBox1.ImageLocation = imagePath;
             }
@@ -181,5 +181,6 @@ namespace Car_Rental_System
         {
             UpdateTotalCost();
         }
+
     }
 }

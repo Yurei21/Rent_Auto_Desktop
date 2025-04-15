@@ -40,6 +40,7 @@
             comboBox1 = new ComboBox();
             label7 = new Label();
             Transaction = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -179,11 +180,24 @@
             Transaction.UseVisualStyleBackColor = false;
             Transaction.Click += Transaction_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SlateBlue;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(13, 27);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 42);
+            button1.TabIndex = 24;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // UserRentCar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(button1);
             Controls.Add(Transaction);
             Controls.Add(comboBox1);
             Controls.Add(dateTimePicker2);
@@ -217,5 +231,6 @@
         private ComboBox comboBox1;
         private Label label7;
         private Button Transaction;
+        private Button button1;
     }
 }
