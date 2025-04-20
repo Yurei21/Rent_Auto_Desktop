@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Transactions;
 using System.Windows.Forms; 
 
@@ -12,6 +13,38 @@ public class DatabaseHelper
     {
         return new MySqlConnection(connectionString);
     }
+
+    public void AdminInitiate()
+    {
+        try
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string checkQuery = "SELECT COUNT(*) FROM admins WHERE username = 'admin'";
+                MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
+                long count = (long)checkCmd.ExecuteScalar();
+
+                if (count == 0)
+                {
+                    string insertQuery = "INSERT INTO admins (username, email, password) VALUES ('admin','admin@gmail.com','Admin21')";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn);
+                    insertCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    Debug.WriteLine("Admin already exists. Skipping insert.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Database Error: " + ex.Message);
+            System.Diagnostics.Debug.WriteLine("Database Exception: " + ex.ToString());
+        }
+    }
+
 
     public object ExecuteScalar(string query, MySqlParameter[] parameters = null)
     {

@@ -179,6 +179,7 @@
             // 
             button1.BackColor = Color.SlateBlue;
             button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Heavitas", 9F);
             button1.ForeColor = Color.White;
             button1.Location = new Point(11, 20);
             button1.Margin = new Padding(3, 2, 3, 2);

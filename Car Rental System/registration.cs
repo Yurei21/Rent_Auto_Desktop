@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using BCrypt.Net;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Text.RegularExpressions;
 
 namespace Car_Rental_System
 {
@@ -44,7 +45,7 @@ namespace Car_Rental_System
             string phone = textBox3.Text.Trim();
             string address = textBox4.Text.Trim();
             string password = textBox5.Text;
-            string confirmedPassword = textBox6.Text;   
+            string confirmedPassword = textBox6.Text;
             DatabaseHelper db = new DatabaseHelper();
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
@@ -56,7 +57,7 @@ namespace Car_Rental_System
             }
 
 
-            if (password != confirmedPassword) 
+            if (password != confirmedPassword)
             {
                 MessageBox.Show("Password doesn't match the confirmed password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -164,11 +165,11 @@ namespace Car_Rental_System
         {
             int score = 0;
 
-            if (password.Length >= 8) score++;  
-            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[a-z]")) score++; 
-            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[A-Z]")) score++; 
-            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"\d")) score++; 
-            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[@$!%*?&]")) score++; 
+            if (password.Length >= 8) score++;
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[a-z]")) score++;
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[A-Z]")) score++;
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"\d")) score++;
+            if (System.Text.RegularExpressions.Regex.IsMatch(password, @"[@$!%*?&]")) score++;
             if (score <= 2) return "Weak";
             if (score == 3 || score == 4) return "Medium";
             return "Strong";
@@ -231,5 +232,22 @@ namespace Car_Rental_System
         {
             textBox5.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string pattern = @"^[a-zA-Z\s]+$";
+            if (!Regex.IsMatch(textBox1.Text, pattern))
+            {
+                textBox1.BackColor = Color.MistyRose;
+                labelNameError.Text = "Only letters and spaces allowed";
+                labelNameError.Visible = true;
+            }
+            else
+            {
+                textBox1.BackColor = Color.White;
+                labelNameError.Visible = false;
+            }
+        }
+
     }
 }

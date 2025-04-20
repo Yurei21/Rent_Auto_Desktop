@@ -5,6 +5,9 @@ namespace Car_Rental_System
         public Landing()
         {
             InitializeComponent();
+
+            DatabaseHelper db = new DatabaseHelper();
+            db.AdminInitiate();
         }
 
         private void button1_Click(object sender, EventArgs e)

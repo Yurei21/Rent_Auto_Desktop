@@ -50,6 +50,7 @@
             button1 = new Button();
             textBox6 = new TextBox();
             label7 = new Label();
+            labelNameError = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -69,6 +70,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(378, 23);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -280,12 +282,23 @@
             label7.TabIndex = 4;
             label7.Text = "Confirm Password";
             // 
+            // labelNameError
+            // 
+            labelNameError.Font = new Font("Heavitas", 8.999999F);
+            labelNameError.ForeColor = Color.Red;
+            labelNameError.Location = new Point(221, 236);
+            labelNameError.Name = "labelNameError";
+            labelNameError.Size = new Size(293, 20);
+            labelNameError.TabIndex = 0;
+            labelNameError.Visible = false;
+            // 
             // Registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(951, 577);
+            Controls.Add(labelNameError);
             Controls.Add(textBox6);
             Controls.Add(checkBoxShowPassword);
             Controls.Add(button1);
@@ -344,5 +357,6 @@
         private Button button1;
         private TextBox textBox6;
         private Label label7;
+        private Label labelNameError;
     }
 }
