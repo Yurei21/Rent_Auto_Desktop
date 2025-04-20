@@ -182,5 +182,16 @@ namespace Car_Rental_System
             UpdateTotalCost();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserDashboard dashboard = ((UserDashboard)this.ParentForm);
+            if (dashboard != null)
+            {
+                UserViewCar viewCarControl = new UserViewCar(dashboard, userId);
+                dashboard.panel3.Controls.Clear(); 
+                dashboard.panel3.Controls.Add(viewCarControl);
+                viewCarControl.Dock = DockStyle.Fill;
+            }
+        }
     }
 }

@@ -214,7 +214,7 @@
         private Panel panel2;
         private Label label1;
         private PictureBox pictureBox1;
-        private Panel panel3;
+        public Panel panel3;
         private Button closeButton;
         private Button button4;
         private Button button1;
