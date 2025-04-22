@@ -85,6 +85,20 @@ namespace Car_Rental_System
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10);
 
+            dataGridView1.BackgroundColor = Color.FromArgb(30, 30, 30);
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(210, 210, 210);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(30, 30, 30);
+            dataGridView1.DefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 230, 250); // light purple-ish
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
             if (dataGridView1.Columns.Count > 0)
             {
                 dataGridView1.Columns["rental_id"].HeaderText = "ID";

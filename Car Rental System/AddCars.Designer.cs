@@ -65,7 +65,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(600, 517);
+            button1.Location = new Point(584, 490);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(207, 95);
@@ -182,7 +182,7 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(144, 507);
+            Register.Location = new Point(127, 524);
             Register.Margin = new Padding(3, 4, 3, 4);
             Register.Name = "Register";
             Register.Size = new Size(207, 61);
@@ -193,7 +193,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(489, 150);
+            pictureBox1.Location = new Point(481, 140);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(384, 330);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;

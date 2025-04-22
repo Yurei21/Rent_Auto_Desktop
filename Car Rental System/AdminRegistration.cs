@@ -20,7 +20,7 @@ namespace Car_Rental_System
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();   
         }
 
         private void Register_Click(object sender, EventArgs e)

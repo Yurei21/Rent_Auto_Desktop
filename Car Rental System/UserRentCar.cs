@@ -128,6 +128,12 @@ namespace Car_Rental_System
             DateTime startDate = dateTimePicker1.Value.Date;
             DateTime endDate = dateTimePicker2.Value.Date;
 
+            if (startDate < DateTime.Today)
+            {
+                MessageBox.Show("Start date cannot be earlier than today.");
+                return;
+            }
+
             int daysDifference = (int)Math.Ceiling((endDate - startDate).TotalDays);
             if (daysDifference <= 0)
             {

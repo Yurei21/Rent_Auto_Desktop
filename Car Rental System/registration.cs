@@ -33,10 +33,6 @@ namespace Car_Rental_System
             signIn.Show();
             this.Hide();
         }
-        private bool IsNameValid(string name)
-        {
-            return System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$");
-        }
 
         private void Register_Click(object sender, EventArgs e)
         {
