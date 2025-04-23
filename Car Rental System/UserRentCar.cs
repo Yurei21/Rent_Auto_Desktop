@@ -29,6 +29,8 @@ namespace Car_Rental_System
             this.price = price;
             this.status = status;
 
+            LoadCarInfo(vehicleId);
+
             label2.Text = model;
             label3.Text = brand;
             try
@@ -54,6 +56,42 @@ namespace Car_Rental_System
 
             decimal newPrice = price * daysDifference;
             label6.Text = $"Total Cost: ₱{newPrice:F2}";
+        }
+
+        private void LoadCarInfo(int vehicleId)
+        {
+            DatabaseHelper db = new DatabaseHelper();
+            string query = "SELECT platenumber, availability_status FROM vehicles WHERE vehicle_id = @vehicleId";
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@vehicleId", vehicleId);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string plateNumber = reader["platenumber"].ToString();
+                            status = reader["availability_status"].ToString();
+
+                            labelStatus.Text = $"Status: {status}";
+                            labelPlate.Text = $"Plate #: {plateNumber}";
+
+                            if (status != "Available")
+                            {
+                                MessageBox.Show($"This car is currently '{status}' and cannot be rented.");
+                                Transaction.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vehicle not found.");
+                        }
+                    }
+                }
+            }
         }
 
         public (int rentalId, int barcode) RentAndPay(int userId, int vehicleId, DateTime startDate, DateTime endDate, decimal totalCost, string paymentMethod)

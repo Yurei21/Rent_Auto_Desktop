@@ -46,7 +46,7 @@ namespace Car_Rental_System
                 : status == "Rented" ? Color.Red
                 : Color.Orange;
 
-            if (status == "Rented" || status == "Under Maintenance")
+            if (status == "Rented" || status == "Under Maintenance" || OccuringRent(userId))
             {
                 Register.Visible = false; 
                 this.Refresh();
@@ -72,6 +72,22 @@ namespace Car_Rental_System
             }
 
             return vehicleId;
+        }
+
+        private bool OccuringRent(int userId)
+        {
+            string query = "SELECT COUNT(*) FROM rentals WHERE user_id = @userId AND status = 'Ongoing'";
+            MySqlParameter[] parameters = { new MySqlParameter("userId", userId) }; 
+            DatabaseHelper db = new DatabaseHelper();
+
+            object result = db.ExecuteScalar(query, parameters);
+
+            if (result != null && int.TryParse(result.ToString(), out int count))
+            {
+                return count > 0;
+            }
+
+            return false;
         }
 
         private void Register_Click(object sender, EventArgs e)

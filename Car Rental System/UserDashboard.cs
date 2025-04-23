@@ -7,23 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 namespace Car_Rental_System
 {
     public partial class UserDashboard : Form
     {
         int userId;
-        string name;
         public UserDashboard(int userId)
         {
             InitializeComponent();
-            DatabaseHelper db = new DatabaseHelper();
             this.userId = userId;
+            label1.Text = $"Welcome, {GetUserName(userId)}";
             UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
             LoadUserControl(userViewCar);
         }
         public int GetLoggedInUserId()
         {
             return userId;
+        }
+
+        public string GetUserName(int userId)
+        {
+            string name = "";
+            DatabaseHelper db = new DatabaseHelper();
+            String query = "SELECT name FROM users WHERE user_id = @userId";
+            MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
+            db.ExecuteScalar(query, param);
+            DataTable result = db.FetchData(query, param);
+
+            if (result.Rows.Count > 0)
+            {
+                name = result.Rows[0]["name"].ToString();
+            }
+
+            return name;
         }
 
         public void LoadUserControl(UserControl control)

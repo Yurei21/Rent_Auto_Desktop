@@ -41,6 +41,10 @@
             label7 = new Label();
             Transaction = new Button();
             button1 = new Button();
+            labelPlate = new Label();
+            labelStatus = new Label();
+            label8 = new Label();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -190,11 +194,57 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // labelPlate
+            // 
+            labelPlate.AutoSize = true;
+            labelPlate.Font = new Font("Heavitas", 12F);
+            labelPlate.ForeColor = Color.White;
+            labelPlate.Location = new Point(17, 366);
+            labelPlate.Name = "labelPlate";
+            labelPlate.Size = new Size(146, 21);
+            labelPlate.TabIndex = 25;
+            labelPlate.Text = "Plate Number";
+            // 
+            // labelStatus
+            // 
+            labelStatus.AutoSize = true;
+            labelStatus.Font = new Font("Heavitas", 12F);
+            labelStatus.ForeColor = Color.White;
+            labelStatus.Location = new Point(17, 436);
+            labelStatus.Name = "labelStatus";
+            labelStatus.Size = new Size(78, 21);
+            labelStatus.TabIndex = 25;
+            labelStatus.Text = "Status";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Heavitas", 15F);
+            label8.ForeColor = Color.SlateBlue;
+            label8.Location = new Point(17, 340);
+            label8.Name = "label8";
+            label8.Size = new Size(180, 26);
+            label8.TabIndex = 18;
+            label8.Text = "Plate Number";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Heavitas", 15F);
+            label9.ForeColor = Color.SlateBlue;
+            label9.Location = new Point(17, 410);
+            label9.Name = "label9";
+            label9.Size = new Size(252, 26);
+            label9.TabIndex = 18;
+            label9.Text = "Availability Status";
+            // 
             // UserRentCar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
+            Controls.Add(labelStatus);
+            Controls.Add(labelPlate);
             Controls.Add(button1);
             Controls.Add(Transaction);
             Controls.Add(comboBox1);
@@ -202,6 +252,8 @@
             Controls.Add(dateTimePicker1);
             Controls.Add(pictureBox1);
             Controls.Add(label5);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -231,5 +283,9 @@
         private Label label7;
         private Button Transaction;
         private Button button1;
+        private Label labelPlate;
+        private Label labelStatus;
+        private Label label8;
+        private Label label9;
     }
 }
