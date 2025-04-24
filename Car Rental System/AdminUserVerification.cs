@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Car_Rental_System
 {
-    public partial class AdminUserVerification: UserControl
+    public partial class AdminUserVerification : UserControl
     {
         public AdminUserVerification()
         {
@@ -49,7 +49,7 @@ namespace Car_Rental_System
         {
             string query = "SELECT document_url FROM documents WHERE user_id = @userId LIMIT 2";
             MySqlParameter[] mySqlParameters = { new MySqlParameter("@userId", userId) };
-            DatabaseHelper db = new DatabaseHelper();   
+            DatabaseHelper db = new DatabaseHelper();
             return db.ExecuteQueryWithDataTable(query, mySqlParameters);
         }
         private void ApproveUser(int userId)
@@ -75,16 +75,16 @@ namespace Car_Rental_System
 
         private void RejectUser(int userId)
         {
-                string updateQuery = "UPDATE Users SET status = 'Rejected' WHERE user_id = @userId";
-                MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
+            string updateQuery = "UPDATE Users SET status = 'Rejected' WHERE user_id = @userId";
+            MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
 
-                DatabaseHelper db = new DatabaseHelper();
-                db.ExecuteQuery(updateQuery, param);
+            DatabaseHelper db = new DatabaseHelper();
+            db.ExecuteQuery(updateQuery, param);
 
-                MessageBox.Show("User has been successfully Rejected!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User has been successfully Rejected!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                flowLayoutPanel1.Controls.Clear();
-                LoadPendingUsers();
+            flowLayoutPanel1.Controls.Clear();
+            LoadPendingUsers();
         }
 
         private void SetupFlowLayoutPanel()
@@ -94,10 +94,10 @@ namespace Car_Rental_System
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
-        
+
         private void CreateUserCard(int userId, string userName, string status)
         {
-            int panelWidth = (flowLayoutPanel1.Width / 2) - 10; 
+            int panelWidth = (flowLayoutPanel1.Width / 2) - 10;
             Panel userPanel = new Panel
             {
                 Size = new Size(panelWidth, 185),
@@ -124,9 +124,9 @@ namespace Car_Rental_System
 
             DataTable documents = GetUserDocuments(userId);
 
-            PictureBox pic1 = new PictureBox { Size = new Size(100, 100), Location = new Point(10, 50), SizeMode = PictureBoxSizeMode.StretchImage};
+            PictureBox pic1 = new PictureBox { Size = new Size(100, 100), Location = new Point(10, 50), SizeMode = PictureBoxSizeMode.StretchImage };
             PictureBox pic2 = new PictureBox { Size = new Size(100, 100), Location = new Point(120, 50), SizeMode = PictureBoxSizeMode.StretchImage };
-            
+
             if (documents.Rows.Count > 0)
             {
                 string docUrl1 = documents.Rows[0]["document_url"].ToString();
@@ -192,6 +192,5 @@ namespace Car_Rental_System
 
             flowLayoutPanel1.Controls.Add(userPanel);
         }
-
     }
 }

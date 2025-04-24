@@ -22,9 +22,10 @@ namespace Car_Rental_System
 
             LoadRentalRecords();
             CustomizeDataGridView();
+            PopulateFilterComboboxes();
         }
 
-        private void LoadRentalRecords()
+        private void LoadRentalRecords(string keyword = "", string rentalStatus = "", string paymentStatus = "")
         {
             string query = @"
                 SELECT 
@@ -38,21 +39,49 @@ namespace Car_Rental_System
                     r.barcode   
                 FROM rentals r
                 INNER JOIN vehicles v ON r.vehicle_id = v.vehicle_id
-                WHERE r.user_id = @userId;
+                WHERE r.user_id = @userId 
             ";
 
-            MySqlParameter[] param = { new MySqlParameter("@userId", userId) };
             DatabaseHelper db = new DatabaseHelper();
 
-            try
+            if (!string.IsNullOrWhiteSpace(keyword))
+                query += " AND v.model LIKE @keyword";
+
+            if (!string.IsNullOrEmpty(rentalStatus))
+                query += " AND r.status = @status";
+
+            if (!string.IsNullOrEmpty(paymentStatus))
+                query += " AND r.payment_status = @paymentStatus";
+
+            using (MySqlConnection conn = db.GetConnection())
             {
-                DataTable rentalData = db.FetchData(query, param);
-                dataGridView1.DataSource = rentalData;
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+
+                        if (!string.IsNullOrEmpty(rentalStatus))
+                            cmd.Parameters.AddWithValue("@status", rentalStatus);
+
+                        if (!string.IsNullOrEmpty(paymentStatus))
+                            cmd.Parameters.AddWithValue("@paymentStatus", paymentStatus);
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading rental records: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load rental records: " + ex.Message);
-            }
+
         }
 
         private void CustomizeDataGridView()
@@ -90,6 +119,36 @@ namespace Car_Rental_System
                 dataGridView1.Columns["rental_start_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
                 dataGridView1.Columns["rental_end_date"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
             }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            string rentalStatus = cmbStatusFilter.SelectedItem?.ToString() ?? "";
+            string paymentStatus = cmbPaymentFilter.SelectedItem?.ToString() ?? "";
+
+            LoadRentalRecords(keyword, rentalStatus, paymentStatus);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            cmbStatusFilter.SelectedIndex = -1;
+            cmbPaymentFilter.SelectedIndex = -1;
+            LoadRentalRecords();
+        }
+        private void PopulateFilterComboboxes()
+        {
+            cmbStatusFilter.Items.Clear();
+            cmbStatusFilter.Items.Add("Ongoing");
+            cmbStatusFilter.Items.Add("Completed");
+
+            cmbPaymentFilter.Items.Clear();
+            cmbPaymentFilter.Items.Add("Pending");
+            cmbPaymentFilter.Items.Add("Paid");
+
+            cmbStatusFilter.SelectedIndex = -1;
+            cmbPaymentFilter.SelectedIndex = -1;
         }
 
     }

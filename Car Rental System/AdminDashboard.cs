@@ -16,6 +16,7 @@ namespace Car_Rental_System
         {
             InitializeComponent();
             LoadUserControl(new AdminUserVerification());
+            linkLabel1.Visible = false;
         }
 
         public void LoadUserControl(UserControl control)
@@ -75,10 +76,23 @@ namespace Car_Rental_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AdminPayments adminPayments = new AdminPayments();  
+            AdminPayments adminPayments = new AdminPayments();
             adminPayments.Dock = DockStyle.Fill;
             panel3.Controls.Clear();
             panel3.Controls.Add(adminPayments);
+        }
+        private int click = 0;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            click++;
+            if (click == 5) linkLabel1.Visible = true;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AdminRegistration registration = new AdminRegistration();
+            this.Hide();
+            registration.Show();
         }
     }
 }
