@@ -17,7 +17,9 @@ namespace Car_Rental_System
         {
             InitializeComponent();
             this.userId = userId;
-            label1.Text = $"Welcome, {GetUserName(userId)}";
+            string name = GetUserName(userId);
+            string format = string.Join("\n", name.Split(' '));
+            label1.Text = $"Welcome, \n{format}";
             UserViewCar userViewCar = new UserViewCar(this, this.GetLoggedInUserId());
             LoadUserControl(userViewCar);
         }

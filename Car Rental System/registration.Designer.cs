@@ -57,18 +57,20 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, -8);
+            pictureBox1.Location = new Point(-1, -11);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(134, 134);
+            pictureBox1.Size = new Size(153, 179);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(152, 208);
+            textBox1.Location = new Point(174, 277);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(378, 23);
+            textBox1.Size = new Size(431, 27);
             textBox1.TabIndex = 1;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -77,17 +79,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(151, 190);
+            label1.Location = new Point(173, 253);
             label1.Name = "label1";
-            label1.Size = new Size(45, 16);
+            label1.Size = new Size(58, 20);
             label1.TabIndex = 2;
             label1.Text = "Name";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(151, 259);
+            textBox2.Location = new Point(173, 345);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(378, 23);
+            textBox2.Size = new Size(431, 27);
             textBox2.TabIndex = 1;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
@@ -96,17 +99,18 @@
             label2.AutoSize = true;
             label2.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(150, 241);
+            label2.Location = new Point(171, 321);
             label2.Name = "label2";
-            label2.Size = new Size(46, 16);
+            label2.Size = new Size(60, 20);
             label2.TabIndex = 2;
             label2.Text = "Email";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(152, 309);
+            textBox3.Location = new Point(174, 412);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(378, 23);
+            textBox3.Size = new Size(431, 27);
             textBox3.TabIndex = 1;
             textBox3.TextChanged += textBox3_TextChanged;
             // 
@@ -115,17 +119,18 @@
             label3.AutoSize = true;
             label3.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(151, 291);
+            label3.Location = new Point(173, 388);
             label3.Name = "label3";
-            label3.Size = new Size(52, 16);
+            label3.Size = new Size(67, 20);
             label3.TabIndex = 2;
             label3.Text = "Phone";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(152, 357);
+            textBox4.Location = new Point(174, 476);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(378, 23);
+            textBox4.Size = new Size(431, 27);
             textBox4.TabIndex = 7;
             // 
             // label4
@@ -133,9 +138,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(151, 339);
+            label4.Location = new Point(173, 452);
             label4.Name = "label4";
-            label4.Size = new Size(66, 16);
+            label4.Size = new Size(88, 20);
             label4.TabIndex = 2;
             label4.Text = "Address";
             // 
@@ -144,17 +149,18 @@
             label5.AutoSize = true;
             label5.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(151, 387);
+            label5.Location = new Point(173, 516);
             label5.Name = "label5";
-            label5.Size = new Size(81, 16);
+            label5.Size = new Size(107, 20);
             label5.TabIndex = 4;
             label5.Text = "Password";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(152, 405);
+            textBox5.Location = new Point(174, 540);
+            textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(378, 23);
+            textBox5.Size = new Size(431, 27);
             textBox5.TabIndex = 3;
             textBox5.UseSystemPasswordChar = true;
             textBox5.TextChanged += textBox5_TextChanged;
@@ -164,9 +170,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Heavitas", 45F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(235, 12);
+            label6.Location = new Point(269, 16);
             label6.Name = "label6";
-            label6.Size = new Size(515, 77);
+            label6.Size = new Size(646, 97);
             label6.TabIndex = 2;
             label6.Text = "REGISTRATION";
             // 
@@ -176,9 +182,10 @@
             closeButton.FlatStyle = FlatStyle.Flat;
             closeButton.Font = new Font("Segoe UI", 9F);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(906, 12);
+            closeButton.Location = new Point(1035, 16);
+            closeButton.Margin = new Padding(3, 4, 3, 4);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(42, 44);
+            closeButton.Size = new Size(48, 59);
             closeButton.TabIndex = 5;
             closeButton.Text = "X";
             closeButton.UseVisualStyleBackColor = true;
@@ -193,9 +200,10 @@
             Register.FlatStyle = FlatStyle.Flat;
             Register.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Register.ForeColor = Color.White;
-            Register.Location = new Point(150, 496);
+            Register.Location = new Point(171, 661);
+            Register.Margin = new Padding(3, 4, 3, 4);
             Register.Name = "Register";
-            Register.Size = new Size(379, 33);
+            Register.Size = new Size(433, 44);
             Register.TabIndex = 6;
             Register.Text = "Register";
             Register.UseVisualStyleBackColor = false;
@@ -205,9 +213,10 @@
             // 
             checkBoxShowPassword.AutoSize = true;
             checkBoxShowPassword.ForeColor = Color.White;
-            checkBoxShowPassword.Location = new Point(536, 407);
+            checkBoxShowPassword.Location = new Point(613, 543);
+            checkBoxShowPassword.Margin = new Padding(3, 4, 3, 4);
             checkBoxShowPassword.Name = "checkBoxShowPassword";
-            checkBoxShowPassword.Size = new Size(108, 19);
+            checkBoxShowPassword.Size = new Size(134, 24);
             checkBoxShowPassword.TabIndex = 8;
             checkBoxShowPassword.Text = "Show password";
             checkBoxShowPassword.UseVisualStyleBackColor = true;
@@ -218,20 +227,21 @@
             labelEmailError.AutoSize = true;
             labelEmailError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelEmailError.ForeColor = Color.Red;
-            labelEmailError.Location = new Point(221, 285);
+            labelEmailError.Location = new Point(253, 380);
             labelEmailError.Name = "labelEmailError";
-            labelEmailError.Size = new Size(0, 16);
+            labelEmailError.Size = new Size(0, 20);
             labelEmailError.TabIndex = 9;
             labelEmailError.Visible = false;
+            labelEmailError.Click += labelEmailError_Click;
             // 
             // labelPhoneError
             // 
             labelPhoneError.AutoSize = true;
             labelPhoneError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelPhoneError.ForeColor = Color.Red;
-            labelPhoneError.Location = new Point(241, 335);
+            labelPhoneError.Location = new Point(275, 447);
             labelPhoneError.Name = "labelPhoneError";
-            labelPhoneError.Size = new Size(0, 16);
+            labelPhoneError.Size = new Size(0, 20);
             labelPhoneError.TabIndex = 10;
             labelPhoneError.Visible = false;
             // 
@@ -240,9 +250,9 @@
             labelPasswordError.AutoSize = true;
             labelPasswordError.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelPasswordError.ForeColor = Color.Red;
-            labelPasswordError.Location = new Point(350, 435);
+            labelPasswordError.Location = new Point(400, 580);
             labelPasswordError.Name = "labelPasswordError";
-            labelPasswordError.Size = new Size(0, 16);
+            labelPasswordError.Size = new Size(0, 20);
             labelPasswordError.TabIndex = 11;
             labelPasswordError.Visible = false;
             // 
@@ -255,9 +265,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Heavitas", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(605, 296);
+            button1.Location = new Point(691, 395);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(301, 36);
+            button1.Size = new Size(344, 48);
             button1.TabIndex = 6;
             button1.Text = "have an account?";
             button1.UseVisualStyleBackColor = false;
@@ -265,9 +276,10 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(151, 454);
+            textBox6.Location = new Point(173, 605);
+            textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(378, 23);
+            textBox6.Size = new Size(431, 27);
             textBox6.TabIndex = 12;
             textBox6.UseSystemPasswordChar = true;
             // 
@@ -276,9 +288,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Heavitas", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(151, 435);
+            label7.Location = new Point(173, 580);
             label7.Name = "label7";
-            label7.Size = new Size(145, 16);
+            label7.Size = new Size(190, 20);
             label7.TabIndex = 4;
             label7.Text = "Confirm Password";
             // 
@@ -286,18 +298,18 @@
             // 
             labelNameError.Font = new Font("Heavitas", 8.999999F);
             labelNameError.ForeColor = Color.Red;
-            labelNameError.Location = new Point(221, 236);
+            labelNameError.Location = new Point(253, 246);
             labelNameError.Name = "labelNameError";
-            labelNameError.Size = new Size(293, 20);
+            labelNameError.Size = new Size(335, 27);
             labelNameError.TabIndex = 0;
             labelNameError.Visible = false;
             // 
             // Registration
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
-            ClientSize = new Size(951, 577);
+            ClientSize = new Size(1087, 769);
             Controls.Add(labelNameError);
             Controls.Add(textBox6);
             Controls.Add(checkBoxShowPassword);
@@ -321,6 +333,7 @@
             Controls.Add(labelPhoneError);
             Controls.Add(labelPasswordError);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Registration";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "registration";

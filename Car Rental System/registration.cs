@@ -66,7 +66,7 @@ namespace Car_Rental_System
 
             if (!IsValidPhone(phone))
             {
-                MessageBox.Show("Invalid phone number! Use only digits (10-15 characters).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid phone number! Use only digits (11 characters).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -80,6 +80,16 @@ namespace Car_Rental_System
             string checkEmailQuery = "SELECT COUNT(*) FROM users WHERE email = @email";
             MySqlParameter[] checkParams = { new MySqlParameter("@email", email) };
             int userExists = db.ExecuteScalarQuery(checkEmailQuery, checkParams);
+
+            string checkPhoneQuery = "SELECT COUNT(*) FROM users WHERE phone = @phone";
+            MySqlParameter[] checkPhoneParams = { new MySqlParameter("@phone", phone) };
+            int phoneExists = db.ExecuteScalarQuery(checkPhoneQuery, checkPhoneParams);
+
+            if (phoneExists > 0)
+            {
+                MessageBox.Show("Phone number is already registered. Try another one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (userExists > 0)
             {
@@ -149,7 +159,7 @@ namespace Car_Rental_System
 
         private bool IsValidPhone(string phone)
         {
-            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10,15}$");
+            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{11}$");
         }
 
         private bool IsStrongPassword(string password)
@@ -190,7 +200,7 @@ namespace Car_Rental_System
             string phone = textBox3.Text.Trim();
             if (!IsValidPhone(phone))
             {
-                labelPhoneError.Text = "Invalid phone number! Use 10-15 digits.";
+                labelPhoneError.Text = "Invalid phone number! Use 11 digits.";
                 labelPhoneError.Visible = true;
             }
             else
@@ -245,5 +255,9 @@ namespace Car_Rental_System
             }
         }
 
+        private void labelEmailError_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -180,8 +180,24 @@ namespace Car_Rental_System
                 ForeColor = Color.White
             };
 
-            approveButton.Click += (sender, e) => ApproveUser(userId);
-            rejectButton.Click += (sender, e) => RejectUser(userId);
+            approveButton.Click += (sender, e) =>
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you want to approve {userName}?", "Confirm Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    ApproveUser(userId);
+                }
+            };
+
+            rejectButton.Click += (sender, e) =>
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you want to reject {userName}?", "Confirm Rejection", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    RejectUser(userId);
+                }
+            };
+
 
             userPanel.Controls.Add(nameLabel);
             userPanel.Controls.Add(statusLabel);

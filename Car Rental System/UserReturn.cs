@@ -17,11 +17,20 @@ namespace Car_Rental_System
         public UserReturn()
         {
             InitializeComponent();
+            textBox1.Focus();
+            this.Load += new System.EventHandler(this.UserReturn_Load);
+            textBox2.Text = "0";
         }
+
+        private void UserReturn_Load(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+        }
+
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == '#')
             {
                 textBox1.Clear();
             }
@@ -55,7 +64,7 @@ namespace Car_Rental_System
             if (returnDate > dueDate)
             {
                 int daysLate = (returnDate - dueDate).Days;
-                lateFee = daysLate * 500;
+                lateFee = daysLate * 3000;
             }
 
             string updateQuery = @"
@@ -117,11 +126,17 @@ namespace Car_Rental_System
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string curr = textBox1.Text;
-            if (curr.Contains("#"))
+            string input = textBox1.Text;
+
+            input = input.Trim();
+
+            if (input.StartsWith("#") && input.Length == 11)
             {
-                textBox1.Text = curr.Replace("#", "");
+                string cleanBarcode = input.Replace("#", "");
+                textBox1.Text = cleanBarcode;
                 textBox1.SelectionStart = textBox1.Text.Length;
+
+                SubmitBarcode();
             }
 
         }

@@ -33,6 +33,14 @@ namespace Car_Rental_System
             label3.Text = $"₱{price:F2}/day";
             label4.Text = status;
 
+            Label labelWarning = new Label();
+            labelWarning.AutoSize = true;
+            labelWarning.ForeColor = Color.OrangeRed;
+            labelWarning.Font = new Font("Arial", 9, FontStyle.Bold);
+            labelWarning.Location = new Point(54, 353); 
+            labelWarning.Visible = false;
+            this.Controls.Add(labelWarning);
+
             try
             {
                 pictureBox1.Image = Image.FromFile(imagePath);
@@ -48,7 +56,15 @@ namespace Car_Rental_System
 
             if (status == "Rented" || status == "Under Maintenance" || OccuringRent(userId))
             {
-                Register.Visible = false; 
+                Register.Visible = false;
+                if (status == "Rented")
+                    labelWarning.Text = "This car is currently rented.";
+                else if (status == "Under Maintenance")
+                    labelWarning.Text = "This car is under maintenance.";
+                else
+                    labelWarning.Text = "Return the car first.";
+
+                labelWarning.Visible = true;
                 this.Refresh();
             }
         }

@@ -20,6 +20,7 @@ namespace Car_Rental_System
         public UserRentCar(UserDashboard dashboard, int vehicleId, int userId, string model, string brand, string imagePath, decimal price, string status)
         {
             InitializeComponent();
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
             this.vehicleId = vehicleId;
             this.userId = userId;

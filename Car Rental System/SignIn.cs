@@ -77,8 +77,9 @@ namespace Car_Rental_System
                         verification.Show();
                         this.Hide();
                     }
-                    
-                    if (status == "Accepted") { 
+
+                    if (status == "Accepted")
+                    {
                         if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                         {
                             MessageBox.Show("Logged in Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -108,6 +109,13 @@ namespace Car_Rental_System
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             textBox2.UseSystemPasswordChar = !checkBoxShowPassword.Checked;
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UserForgotPassword userForgotPassword = new UserForgotPassword();
+            this.Hide();
+            userForgotPassword.Show();
         }
     }
 }
